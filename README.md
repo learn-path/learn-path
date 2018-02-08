@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/learn-path/learn-path.svg?branch=master)](https://travis-ci.org/learn-path/learn-path) [![Coverage Status](https://coveralls.io/repos/github/learn-path/learn-path/badge.svg?branch=master)](https://coveralls.io/github/learn-path/learn-path?branch=master)
