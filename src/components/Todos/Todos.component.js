@@ -1,5 +1,4 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { isLoaded, isEmpty } from "react-redux-firebase";
 
 const Todos = ({ todos }) => {
