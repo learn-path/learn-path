@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NewPaths from "./PathSlider/NewPaths";
+import SearchBar from "./Search/SearchBar";
 
 export default () => (
   <div>
-    <h1>Home</h1>
-    <Link to="/learn/react">Learn React</Link>
+    <SearchBar />
     <NewPaths title="New Paths" />
   </div>
 );
