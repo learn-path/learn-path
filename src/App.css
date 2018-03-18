@@ -26,3 +26,75 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.path .header {
+ display: flex;
+}
+
+.path .header span {
+ display: block;
+ width: 30%;
+ margin: 50px 10px 10px 10px;
+ font-size: 20px;
+ text-align: center;
+}
+
+.path .header p {
+ display: block;
+ margin: 30px 10px 10px 10px;
+ font-size: 14px;
+}
+.path ul {
+ width: 100%;
+ float: left;
+}
+
+.path ul li {
+ width: 80%;
+ min-height: 50px;
+ float: left;
+ font-size: 14px;
+ font-weight: 500;
+ color: #444;
+ line-height: 22px;
+ background: #fff;
+ border-radius: 5px;
+ position: relative;
+ box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.1);
+ margin: 0 0 10px 0;
+ padding: 14px 100px 14px 14px;
+ word-break: break-word;
+ list-style: none;
+}
+
+.path ul li span {
+ font-size: 18px;
+ font-weight: 600;
+ margin: 0px;
+}
+
+.btn-4 {
+ border-radius: 50px;
+ border: 3px solid #aaa;
+ color: #aaaaaa;
+ overflow: hidden;
+}
+
+.btn {
+ font-family: inherit;
+ font-size: inherit;
+ color: inherit;
+ background: none; 
+ cursor: pointer;
+ padding: 10px 20px;
+ display: inline-block;
+ margin: 5px 10px;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ font-weight: 700;
+ outline: none;
+ position: relative;
+ -webkit-transition: all 0.3s;
+ -moz-transition: all 0.3s;
+ transition: all 0.3s;
+ text-decoration: none;
+}
