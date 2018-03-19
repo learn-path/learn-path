@@ -7,7 +7,6 @@ import SearchResults from "./SearchResults";
 export default compose(
   firestoreConnect(props => {
     let query = queryString.parse(props.location.search);
-    console.log(query);
     return [
       {
         collection: "paths",
