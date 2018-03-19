@@ -28,6 +28,16 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "coveralls": "^3.0.0"
+    "coveralls": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "react-addons-test-utils": "^15.6.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!**/registerServiceWorker.js"
+    ]
   }
 }
