@@ -42,6 +42,7 @@ export default class SearchBar extends Component {
           type="text"
           ref={input => (this.input = input)}
           onKeyDown={this.handleKeyDown}
+          placeholder="Search..."
         />
         <button onClick={this.handleSearch}>Search</button>
       </div>
