@@ -11,14 +11,17 @@ class App extends Component {
     return (
       <div>
         <header>
-          <Link to="/">Home</Link>
-          <Link to="/about-us">About</Link>
+          <div className="container">
+            <Link to="/" className="logo">
+              Learn Path
+            </Link>
+          </div>
         </header>
         <main>
           <Route exact path="/" component={Home} />
           <Route exact path="/about-us" component={About} />
           <Route path="/learn/:slurg" component={Path} />
-          <Route excat path="/paths/search" component={SearchPaths} />
+          <Route exact path="/paths/search" component={SearchPaths} />
         </main>
       </div>
     );

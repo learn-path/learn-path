@@ -1,5 +1,239 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+:root {
+  font-size: calc(1vw + 1vh + 0.5vmin);
+}
+
+html {
+  box-sizing: border-box;
+  font: 1rem/1.6 "Roboto", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
-  margin: 0;
+  line-height: 1.5;
+  background: #ecf2f6;
+}
+
+.container {
+  width: 100%;
+  padding: 0px 5% 0px 5%;
+}
+
+header {
+  padding-top: 10px;
+  min-height: 30px;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+a.logo {
+  text-decoration: none;
+  color: #15a4fa;
+  font-size: 1.7rem;
+  font-weight: 900;
+  display: block;
+  text-align: center;
+}
+.path .header {
+  background: #ffffff;
+  box-shadow: 0px 2px 5px rgba(4, 48, 74, 0.12);
+  padding-bottom: 15px;
+  z-index: 999;
+  position: relative;
+}
+.path-title {
+  min-height: 90px;
+  margin-bottom: 15px;
+}
+
+.path-title span {
+  font-size: 1.8rem;
+  margin-left: 20px;
+  color: #293f4d;
+}
+
+.path-title .path-image {
+  min-width: 90px;
+  min-height: 90px;
+  content: "";
+  float: left;
+  background-color: rgb(255, 238, 0);
+}
+
+.path-info {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #dae1e5;
+  padding-bottom: 10px;
+}
+
+.path-info div,
+.path-info span {
+  flex-grow: 1;
+}
+
+.path-info .subscribers,
+.path-info .level,
+.path-info .ratings .rate {
+  display: block;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.path-info .subscribers::before,
+.path-info .level::before,
+.path-info .ratings .count {
+  display: block;
+  color: #a7b1b8;
+  font-size: 1.06rem;
+  font-weight: 400;
+}
+
+.path-info .subscribers::before {
+  content: "Subscribers";
+}
+
+.path-info .level::before {
+  content: "Level";
+}
+.user-profile {
+  border-bottom: 1px solid #dae1e5;
+  padding: 10px 0px 10px 0px;
+  margin-bottom: 15px;
+}
+.user-profile .user-image {
+  width: 70px;
+  height: 70px;
+  display: block;
+  background-color: aquamarine;
+  float: left;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.user-profile span {
+  font-size: 1.9rem;
+  color: #293f4d;
+  font-weight: 600;
+}
+
+.user-profile p {
+  display: block;
+  margin: 0px;
+  color: #293f4d;
+  font-size: 1.06rem;
+}
+
+.btn-subscribe {
+  width: 335px;
+  height: 40px;
   padding: 0;
-  font-family: sans-serif;
+  border: none;
+  background: none;
+  background: #15a4fa;
+  border-radius: 20px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.path .details {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+}
+
+.path .details span {
+  padding-top: 10px;
+  font-size: 1.7rem;
+  color: #293f4d;
+  display: block;
+}
+
+.path-item,
+.search-result-item {
+  background: #ffffff;
+  box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  list-style: none;
+  padding: 10px;
+}
+
+.path-item-list {
+  margin-top: 10px;
+  list-style-type: unset;
+  -webkit-padding-start: 0px;
+}
+
+.path-item a,
+.search-result-item a {
+  text-decoration: none;
+  color: #293f4d;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.path-slider .title {
+  padding-top: 15px;
+  font-size: 1.7rem;
+  color: #293f4d;
+  display: block;
+}
+
+.search-bar input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px;
+  width: 60%;
+}
+
+.hero {
+  min-height: 50%;
+  background-image: url(https://images.unsplash.com/photo-1518463892881-d587bf2c296a?ixlib=rb-0.3.5…EyMDd9&s=496e94f…&auto=format&fit=crop&w=2600&q=80);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.path-slider-wrapper {
+  display: flex;
+  padding-top: 15px;
+}
+.path-slider-wrapper div {
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  justify-content: space-between;
+  flex-grow: 0;
+  margin-right: 15px;
+  box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
+}
+.path-slider-wrapper div span a {
+  text-decoration: none;
+  color: #293f4d;
+  font-weight: 600;
+  font-size: 1.3em;
+  padding: 5px;
+  margin-top: 60%;
+  border-top: 1px solid #a7b1b8;
+  display: block;
+}
+
+li.no-path-found {
+  list-style: none;
+  font-weight: 600;
+  font-size: 2rem;
+  font-variant: all-petite-caps;
+  color: #293f4d;
+  text-align: center;
+  margin-top: 80px;
 }

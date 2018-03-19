@@ -4,7 +4,13 @@ import SearchBar from "./Search/SearchBar";
 
 export default () => (
   <div>
-    <SearchBar />
-    <NewPaths title="New Paths" />
+    <div className="hero">
+      <div className="container">
+        <SearchBar style={{ marginTop: 50 }} />
+      </div>
+    </div>
+    <div className="container">
+      <NewPaths title="New Paths" />
+    </div>
   </div>
 );

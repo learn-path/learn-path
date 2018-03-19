@@ -1,20 +1,46 @@
 import React from "react";
 import PathItem from "./PathItem";
+import "normalize.css";
 
 const Path = ({ path, firestore, firebase }) => {
   let p = path ? path : { items: [] };
   return (
     <div className="path">
       <div className="header">
-        <span>{p.title}</span>
-        <p>{p.short_desc}</p>
-        <span>{p.level}</span>
+        <div className="container">
+          <div className="path-title">
+            <div className="path-image" />
+            <span>{p.title}</span>
+          </div>
+          <div className="path-info">
+            <div className="ratings">
+              <span className="count">18 ratings</span>
+              <span className="rate">4.9</span>
+            </div>
+            <span className="subscribers">120,600</span>
+            <span className="level">{p.level}</span>
+          </div>
+          <div className="user-profile">
+            <div className="user-image" />
+            <span>Jonh Doe</span>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum ultricies...
+            </p>
+          </div>
+          <button className="btn-subscribe">Subscribe</button>
+        </div>
       </div>
-      <ul>
-        {p.items.map((item, index) => (
-          <PathItem key={`p-item-${index}`} item={item} />
-        ))}
-      </ul>
+      <div className="details">
+        <div className="container">
+          <span>Start your journey</span>
+          <ul className="path-item-list">
+            {p.items.map((item, index) => (
+              <PathItem key={`p-item-${index}`} item={item} />
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

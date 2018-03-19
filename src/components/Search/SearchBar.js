@@ -37,7 +37,7 @@ export default class SearchBar extends Component {
     }
 
     return (
-      <div>
+      <div className="search-bar">
         <input
           type="text"
           ref={input => (this.input = input)}
