@@ -17,7 +17,7 @@ export default compose(
   }),
   connect(({ firestore }, props) => {
     return {
-      paths: firestore.ordered.paths
+      newPaths: firestore.ordered.paths
     };
   })
 )(PathSlider);

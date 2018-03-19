@@ -13,13 +13,14 @@ export default compose(
         collection: "paths",
         where: ["title", "==", query.q],
         limit: 10,
-        orderBy: ["created", "desc"]
+        orderBy: ["created", "desc"],
+        storeAs: "searchResults"
       }
     ];
   }),
   connect(({ firestore }, props) => {
     return {
-      paths: firestore.ordered.paths
+      searchResults: firestore.ordered.searchResults
     };
   })
 )(SearchResults);

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PathSlider = ({ paths, title }) => {
-  let p = paths ? paths : [];
+const PathSlider = ({ newPaths, title }) => {
+  let p = newPaths ? newPaths : [];
   return (
     <div className="path-slider">
       <span className="title">{title}</span>
