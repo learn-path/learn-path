@@ -2,7 +2,7 @@ import React from "react";
 import PathItem from "./PathItem";
 import "normalize.css";
 
-const Path = ({ path, firestore, firebase }) => {
+const Path = ({ path }) => {
   let p = path ? path : { items: [] };
   return (
     <div className="path">

@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Todos from "./Todos.component";
+import Path from "./Path.component";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<Todos />, div);
+  ReactDOM.render(<Path />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
