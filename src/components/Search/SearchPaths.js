@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { firestoreConnect, getVal } from "react-redux-firebase";
+import { firestoreConnect } from "react-redux-firebase";
 import queryString from "query-string";
 import SearchResults from "./SearchResults";
 

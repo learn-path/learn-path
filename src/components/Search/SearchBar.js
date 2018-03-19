@@ -6,6 +6,21 @@ export default class SearchBar extends Component {
   state = {
     keyword: ""
   };
+
+  handleSearch = () => {
+    this.setState({ keyword: "react" });
+  };
+
+  handleKeyDown = event => {
+    switch (event.key) {
+      case "Enter":
+        this.handleSearch();
+        break;
+      default:
+        return;
+    }
+  };
+
   render() {
     const { keyword } = this.state;
 
@@ -23,10 +38,12 @@ export default class SearchBar extends Component {
 
     return (
       <div>
-        <input type="text" ref={input => (this.input = input)} />
-        <button onClick={() => this.setState({ keyword: "react" })}>
-          Search
-        </button>
+        <input
+          type="text"
+          ref={input => (this.input = input)}
+          onKeyDown={this.handleKeyDown}
+        />
+        <button onClick={this.handleSearch}>Search</button>
       </div>
     );
   }
