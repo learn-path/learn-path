@@ -37,8 +37,6 @@ a.logo {
   color: #15a4fa;
   font-size: 1.7rem;
   font-weight: 900;
-  display: block;
-  text-align: center;
 }
 .path .header {
   background: #ffffff;
@@ -262,4 +260,28 @@ li.no-path-found {
   color: #293f4d;
   text-align: center;
   margin-top: 80px;
+}
+
+.btn {
+  padding: 8px;
+  border: none;
+  background: none;
+  color: #15a4fa;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+
+.login-form {
+  width: 60%;
+  height: 80%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  margin-top: 3%;
+  box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
+  padding: 20px;
 }

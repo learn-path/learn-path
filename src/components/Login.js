@@ -14,9 +14,12 @@ export const Login = ({ firebase, auth }) => {
     return <Redirect to="/" />;
   }
   return (
-    <div>
-      <span>LOGIN</span>
-      <button key={0} onClick={() => firebase.login(google)}>
+    <div className="login-form">
+      <button
+        key={0}
+        onClick={() => firebase.login(google)}
+        className="btn google"
+      >
         Login with Google
       </button>
     </div>

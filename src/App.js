@@ -19,15 +19,21 @@ class App extends Component {
     return (
       <div>
         <header>
-          <div className="container">
+          <div className="container" style={{ textAlign: "center" }}>
             <Link to="/" className="logo">
               Learn Path
             </Link>
-            {this.props.auth.isEmpty ? (
-              <Link to="/login">LOGIN</Link>
-            ) : (
-              <button onClick={this.logout}>LOGOUT</button>
-            )}
+            <div style={{ float: "right", marginTop: "0.25rem" }}>
+              {this.props.auth.isEmpty ? (
+                <Link className="btn" to="/login">
+                  LOGIN
+                </Link>
+              ) : (
+                <button className="btn" onClick={this.logout}>
+                  LOGOUT
+                </button>
+              )}
+            </div>
           </div>
         </header>
         <main>
