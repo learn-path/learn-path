@@ -3,12 +3,13 @@ import { Route, Link, Switch, withRouter } from "react-router-dom";
 import About from "./components/About";
 import Home from "./components/Home";
 import SearchPaths from "./components/Search/SearchPaths";
-import "./App.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Path from "./components/Path";
 import Login from "./components/Login";
 import { firebaseConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import "./App.css";
 
 class App extends Component {
   logout = () => {
