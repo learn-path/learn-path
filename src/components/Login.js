@@ -7,11 +7,11 @@ import { Redirect } from "react-router-dom";
 
 const google = {
   provider: "google",
-  type: "redirect"
+  type: "popup"
 };
 export const Login = ({ firebase, auth }) => {
   if (auth.uid) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
   return (
     <div className="login-form">

@@ -4,6 +4,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import SearchPaths from "./components/Search/SearchPaths";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./components/Dashboard";
 import Path from "./components/Path";
 import Login from "./components/Login";
 import { firebaseConnect } from "react-redux-firebase";
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/learn/:slurg" component={Path} />
             <Route exact path="/paths/search" component={SearchPaths} />
             <Route exact path="/login" component={Login} />
+            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
         </main>
       </div>
