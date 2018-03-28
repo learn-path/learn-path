@@ -1,8 +1,9 @@
 import React from "react";
 import PathItem from "./PathItem";
 import "normalize.css";
+import ToggleButton from "react-toggle-button";
 
-const Path = ({ path }) => {
+const Path = ({ path, togglePrivate, auth }) => {
   let p = path ? path : { items: [] };
   return (
     <div className="path">
@@ -28,6 +29,11 @@ const Path = ({ path }) => {
               Vestibulum ultricies...
             </p>
           </div>
+          {!auth || auth.isEmpty ? (
+            ""
+          ) : (
+            <ToggleButton value={!p.private} onToggle={togglePrivate} />
+          )}
           <button className="btn-subscribe">Subscribe</button>
         </div>
       </div>
