@@ -5,13 +5,18 @@ const PathSlider = ({ newPaths, title }) => {
   let p = newPaths ? newPaths : [];
   return (
     <div className="path-slider">
-      <span className="title">{title}</span>
+      <h2 className="title">{title}</h2>
       <div className="path-slider-wrapper">
         {p.map(item => (
-          <div key={`p-i-${item.id}`}>
-            <span>
-              <Link to={`/learn/${item.id}`}>{item.title}</Link>
-            </span>
+          <div className="card path-card path-card-col" key={`p-i-${item.id}`}>
+            <Link to={`/learn/${item.id}`}>
+              <span className="card-image"></span>
+              <div className="card-body">
+                <h3>{item.title}</h3>
+                <p className="path-stars"><span className="icon-star"></span>0.0</p>
+                <p className="path-level">Intermediate</p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

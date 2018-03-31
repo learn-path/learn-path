@@ -20,22 +20,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header>
-          <div className="container" style={{ textAlign: "center" }}>
-            <Link to="/" className="logo">
-              Learn Path
-            </Link>
-            <div style={{ float: "right", marginTop: "0.25rem" }}>
-              {this.props.auth.isEmpty ? (
-                <Link className="btn" to="/login">
-                  LOGIN
-                </Link>
-              ) : (
-                <button className="btn" onClick={this.logout}>
-                  LOGOUT
-                </button>
-              )}
-            </div>
+        <header className="nav">
+          <Link to="/" className="logo">
+            Learn Path
+          </Link>
+          <div className="user-buttons">
+            {this.props.auth.isEmpty ? (
+              <Link className="btn" to="/login">
+                Login
+              </Link>
+            ) : (
+              <button className="btn" onClick={this.logout}>
+                Logout
+              </button>
+            )}
           </div>
         </header>
         <main>

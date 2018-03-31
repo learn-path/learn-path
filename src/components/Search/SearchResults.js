@@ -7,8 +7,15 @@ const SearchResults = ({ searchResults }) => {
     "Loading"
   ) : searchResults && searchResults.length ? (
     searchResults.map(path => (
-      <li className="search-result-item" key={path.id}>
-        <Link to={`/learn/${path.id}`}>{path.title}</Link>
+      <li className="card path-card path-card-row" key={path.id}>
+        <Link to={`/learn/${path.id}`}>
+          <span className="card-image"></span>
+          <div className="card-body">
+            <h3>{path.title}</h3>
+            <p className="path-stars"><span className="icon-star"></span>0.0</p>
+            <p className="path-level">Intermediate</p>
+          </div>
+        </Link>
       </li>
     ))
   ) : (
@@ -16,7 +23,8 @@ const SearchResults = ({ searchResults }) => {
   );
   return (
     <div className="container">
-      <ul className="path-item-list">{list}</ul>
+      <h2 className="title">Search results</h2>
+      <ul className="path-list">{list}</ul>
     </div>
   );
 };
