@@ -6,10 +6,12 @@ export default () => (
   <div>
     <div className="hero">
       <div className="container">
-        <SearchBar style={{ marginTop: 50 }} />
+        <h1>Lorem ipsum dolor</h1>
+        <p>Pellentesque imperdiet leo nisi, et feugiat sapien interdum et</p>
       </div>
     </div>
     <div className="container">
+      <SearchBar />
       <NewPaths title="New Paths" />
     </div>
   </div>

@@ -1,12 +1,19 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 :root {
-  font-size: calc(1vw + 1vh + 0.5vmin);
+  /*font-size: calc(1vw + 1vh + 0.5vmin);*/
+  --main-background-color: #ecf2f6;
+  --blue: #15A4FA;
+  --green: #57C94D;
+  --dark-gray: #293F4D;
+  --gray: #A7B1B8;
+  --light-gray: #DAE1E5;
+  --yellow: #F7C428;
 }
 
 html {
   box-sizing: border-box;
-  font: 1rem/1.6 "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 *,
@@ -16,14 +23,42 @@ html {
 }
 
 body {
+  font-size: 1rem;
+  font-weight: 400;
   line-height: 1.5;
-  background: #ecf2f6;
+  background: var(--main-background-color);
 }
 
 .container {
   width: 100%;
-  padding: 0px 5% 0px 5%;
+  padding: 0 15px;
+  margin: 0 auto;
 }
+
+@media (min-width: 576px) {
+  .container {
+      max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {  
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {  
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
 
 header {
   padding-top: 10px;
@@ -34,12 +69,12 @@ header {
 
 a.logo {
   text-decoration: none;
-  color: #15a4fa;
+  color: var(--blue);
   font-size: 1.7rem;
   font-weight: 900;
 }
 .path .header {
-  background: #ffffff;
+  background: white;
   box-shadow: 0px 2px 5px rgba(4, 48, 74, 0.12);
   padding-bottom: 15px;
   z-index: 999;
@@ -61,7 +96,7 @@ a.logo {
   min-height: 90px;
   content: "";
   float: left;
-  background-color: rgb(255, 238, 0);
+  background-color: var(--yellow);
 }
 
 .path-info {
@@ -80,7 +115,7 @@ a.logo {
 .path-info .level,
 .path-info .ratings .rate {
   display: block;
-  color: #000;
+  color: var(--dark-gray);
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -89,7 +124,7 @@ a.logo {
 .path-info .level::before,
 .path-info .ratings .count {
   display: block;
-  color: #a7b1b8;
+  color: var(--gray);
   font-size: 1.06rem;
   font-weight: 400;
 }
@@ -102,7 +137,7 @@ a.logo {
   content: "Level";
 }
 .user-profile {
-  border-bottom: 1px solid #dae1e5;
+  border-bottom: 1px solid var(--light-gray);
   padding: 10px 0px 10px 0px;
   margin-bottom: 15px;
 }
@@ -118,14 +153,14 @@ a.logo {
 
 .user-profile span {
   font-size: 1.9rem;
-  color: #293f4d;
+  color: var(--dark-gray);
   font-weight: 600;
 }
 
 .user-profile p {
   display: block;
   margin: 0px;
-  color: #293f4d;
+  color: var(--dark-gray);
   font-size: 1.06rem;
 }
 
@@ -135,7 +170,7 @@ a.logo {
   padding: 0;
   border: none;
   background: none;
-  background: #15a4fa;
+  background: var(--blue);
   border-radius: 20px;
   color: white;
   font-size: 18px;
@@ -151,13 +186,13 @@ a.logo {
 .path .details span {
   padding-top: 10px;
   font-size: 1.7rem;
-  color: #293f4d;
+  color: var(--dark-gray);
   display: block;
 }
 
 .path-item,
 .search-result-item {
-  background: #ffffff;
+  background: white;
   box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
   border-radius: 5px;
   margin-bottom: 10px;
@@ -174,7 +209,7 @@ a.logo {
 .path-item a,
 .search-result-item a {
   text-decoration: none;
-  color: #293f4d;
+  color: var(--dark-gray);
   font-weight: 600;
   font-size: 1.5em;
 }
@@ -182,7 +217,7 @@ a.logo {
 .path-slider .title {
   padding-top: 15px;
   font-size: 1.7rem;
-  color: #293f4d;
+  color: var(--dark-gray);
   display: block;
 }
 .search-bar {
@@ -203,8 +238,7 @@ a.logo {
   padding-top: 2px;
   margin-left: -10px;
   padding: 10px;
-  border-left: 1px solid whitesmoke;
-  color: #797979;
+  color: var(--gray);
   font-weight: 500;
   font-variant: all-petite-caps;
 }
@@ -243,7 +277,7 @@ a.logo {
 }
 .path-slider-wrapper div span a {
   text-decoration: none;
-  color: #293f4d;
+  color: var(--dark-gray);
   font-weight: 600;
   font-size: 1.3em;
   padding: 5px;
@@ -257,7 +291,7 @@ li.no-path-found {
   font-weight: 600;
   font-size: 2rem;
   font-variant: all-petite-caps;
-  color: #293f4d;
+  color: var(--dark-gray);
   text-align: center;
   margin-top: 80px;
 }
@@ -266,7 +300,7 @@ li.no-path-found {
   padding: 8px;
   border: none;
   background: none;
-  color: #15a4fa;
+  color: var(--blue);
   border-radius: 4px;
   background-color: white;
   font-size: 1.1rem;
