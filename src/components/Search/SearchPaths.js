@@ -10,7 +10,11 @@ export default compose(
     return [
       {
         collection: "paths",
-        where: [["title", "==", query.q], ["blocked", "==", false]],
+        where: [
+          ["title", "==", query.q],
+          ["blocked", "==", false],
+          ["private", "==", false]
+        ],
         limit: 10,
         orderBy: ["created", "desc"],
         storeAs: "searchResults",

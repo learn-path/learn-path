@@ -11,14 +11,20 @@ export default compose(
     return [
       {
         collection: "paths",
-        path: `paths/${props.match.params.slurg}`
-      } // create todo listener
+        doc: props.match.params.slurg
+      },
+      {
+        collection: "paths",
+        doc: props.match.params.slurg,
+        subcollections: [{ collection: "items" }],
+        storeAs: "items"
+      }
     ];
   }),
   connect(({ firestore, firebase }, props) => {
-    console.log(firestore);
     return {
       path: getVal(firestore, `data/paths/${props.match.params.slurg}`),
+      items: firestore.ordered.items,
       auth: firebase.auth,
       id: `${props.match.params.slurg}`
     };

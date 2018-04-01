@@ -1,23 +1,22 @@
-
 /** CSS variables **/
 :root {
   --light-blue: #ecf2f6;
-  --light-blue-hover: #DAE1E5;
-  --blue: #15A4FA;
-  --blue-hover: #0B8BD9;
-  --green: #57C94D;
-  --dark-gray: #293F4D;
-  --gray: #A7B1B8;
-  --light-gray: #DAE1E5;
-  --yellow: #F7C428;
+  --light-blue-hover: #dae1e5;
+  --blue: #15a4fa;
+  --blue-hover: #0b8bd9;
+  --green: #57c94d;
+  --dark-gray: #293f4d;
+  --gray: #a7b1b8;
+  --light-gray: #dae1e5;
+  --yellow: #f7c428;
 }
 
 /** Structure **/
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
 html {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 *,
@@ -59,17 +58,17 @@ p {
 
 @media (min-width: 576px) {
   .container {
-      max-width: 540px;
+    max-width: 540px;
   }
 }
 
-@media (min-width: 768px) {  
+@media (min-width: 768px) {
   .container {
     max-width: 720px;
   }
 }
 
-@media (min-width: 992px) {  
+@media (min-width: 992px) {
   .container {
     max-width: 960px;
   }
@@ -113,7 +112,7 @@ a.logo {
   display: block;
   background-color: var(--gray);
   mask-image: url(img/user.svg);
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .btn-login:hover {
@@ -185,8 +184,8 @@ a.logo {
   width: 36px;
   text-indent: -9000px;
   background-color: var(--gray);
-  -webkit-mask-image: url(/static/media/magnifying-glass.0e7feb70.svg);
-  mask-image: url(/static/media/magnifying-glass.0e7feb70.svg);
+  -webkit-mask-image: url(img/magnifying-glass.svg);
+  mask-image: url(img/magnifying-glass.svg);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 22px 22px;
@@ -217,11 +216,11 @@ a.logo {
 .path-card a {
   text-decoration: none;
   color: inherit;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .path-card a:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .path-card-col {
@@ -267,7 +266,7 @@ a.logo {
 .rate {
   font-weight: 700;
   margin: 0;
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 .icon-star {
@@ -283,7 +282,7 @@ a.logo {
 .level {
   font-weight: 700;
   margin: 0;
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 /** Path List **/
@@ -317,7 +316,7 @@ li.no-path-found {
   margin-bottom: 15px;
 }
 
-.path-title span {
+.path-title div:first-child span {
   font-size: 1.8rem;
   margin-left: 20px;
   color: #293f4d;
@@ -381,7 +380,7 @@ li.no-path-found {
   height: 70px;
   display: block;
   background-color: var(--gray);
-  border-radius: 100%
+  border-radius: 100%;
 }
 
 .user-profile-body {
@@ -409,7 +408,7 @@ li.no-path-found {
   display: flex;
 }
 
-.path .details span {
+.path .details div div span:first-of-type {
   padding-top: 10px;
   font-size: 1.7rem;
   color: var(--dark-gray);
@@ -436,13 +435,24 @@ li.no-path-found {
   color: var(--dark-gray);
   font-weight: 600;
   font-size: 1.05rem;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   background: url(img/external-link-symbol.svg) no-repeat right 15px top 17px;
   background-size: 20px 20px;
 }
 
 .path-item .path-item-link:hover {
   opacity: 0.7;
+}
+span.item-command {
+  margin-top: 15px;
+  color: var(--gray);
+  margin-right: 10px;
+}
+
+span.path-command {
+  margin-top: 20px;
+  color: var(--blue);
+  margin-right: 10px;
 }
 
 /** Buttons **/
@@ -456,7 +466,7 @@ li.no-path-found {
   outline: none;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
 }
 
 .btn:hover {
@@ -467,12 +477,12 @@ li.no-path-found {
   font-size: 1.2rem;
 }
 
-.btn-blue {  
+.btn-blue {
   background: var(--blue);
   color: white;
 }
 
-.btn-blue:hover {  
+.btn-blue:hover {
   background: var(--blue-hover);
   color: white;
 }
@@ -480,7 +490,6 @@ li.no-path-found {
 .btn-subscribe {
   width: 100%;
   font-weight: 700;
-
 }
 
 /** Forms **/
