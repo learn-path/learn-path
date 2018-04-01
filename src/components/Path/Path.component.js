@@ -16,13 +16,14 @@ class Path extends Component {
   };
 
   render() {
+    if (!this.props.path) return <span>Loading</span>;
     let p = this.props.path ? this.props.path : { items: [] };
     return (
       <div className="path">
         {this.state.path ? (
           <PathEdit path={p} handleSave={this.handlePathSave} />
         ) : (
-          <PathHeader path={p} setEdit={this.setEdit("path")} />
+          <PathHeader path={p} setEdit={this.setEdit("path")} {...this.props} />
         )}
         <div className="details">
           <div className="container">

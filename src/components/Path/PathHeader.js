@@ -1,7 +1,8 @@
 import React from "react";
 import IconProfile from "../../img/profile.svg";
+import ToggleButton from "react-toggle-button";
 
-const PathHeader = ({ path, editMode, setEdit }) => (
+const PathHeader = ({ path, editMode, setEdit, auth, togglePrivate }) => (
   <div className="header">
     <div className="container">
       <div className="path-title">
@@ -29,6 +30,14 @@ const PathHeader = ({ path, editMode, setEdit }) => (
             ultricies...
           </p>
         </div>
+      </div>
+      <div style={{ display: "flex", marginBottom: 10 }}>
+        <span style={{ marginRight: 20 }}>Public</span>
+        {!auth || auth.isEmpty ? (
+          ""
+        ) : (
+          <ToggleButton value={!path.private} onToggle={togglePrivate} />
+        )}
       </div>
       <button className="btn btn-blue btn-large btn-subscribe">
         Subscribe

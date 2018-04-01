@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect, getVal } from "react-redux-firebase";
 import Path from "./Path.component";
+import { withHandlers } from "recompose";
 
 // Component enhancer that loads todo into redux then into the todo prop
 export default compose(
@@ -14,9 +15,20 @@ export default compose(
       } // create todo listener
     ];
   }),
-  connect(({ firestore }, props) => {
+  connect(({ firestore, firebase }, props) => {
+    console.log(firestore);
     return {
-      path: getVal(firestore, `data/paths/${props.match.params.slurg}`)
+      path: getVal(firestore, `data/paths/${props.match.params.slurg}`),
+      auth: firebase.auth,
+      id: `${props.match.params.slurg}`
     };
+  }),
+  withHandlers({
+    togglePrivate: ({ firestore, path, id }) => () => {
+      firestore.update(
+        { collection: "paths", doc: id },
+        { private: !path.private }
+      );
+    }
   })
 )(Path);
