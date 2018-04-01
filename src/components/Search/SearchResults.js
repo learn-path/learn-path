@@ -1,16 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { isLoaded } from "react-redux-firebase";
+import SearchResultItem from "./SearchResultItem";
 
 const SearchResults = ({ searchResults }) => {
   const list = !isLoaded(searchResults) ? (
     "Loading"
   ) : searchResults && searchResults.length ? (
-    searchResults.map(path => (
-      <li className="search-result-item" key={path.id}>
-        <Link to={`/learn/${path.id}`}>{path.title}</Link>
-      </li>
-    ))
+    searchResults.map(path => <SearchResultItem key={path.id} path={path} />)
   ) : (
     <li className="no-path-found">No path found</li>
   );

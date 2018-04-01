@@ -4,6 +4,12 @@ import "normalize.css";
 
 const Path = ({ path }) => {
   let p = path ? path : { items: [] };
+  if (p && p.blocked)
+    return (
+      <h2 style={{ color: "red", textAlign: "center" }}>
+        This path is blocked
+      </h2>
+    );
   return (
     <div className="path">
       <div className="header">

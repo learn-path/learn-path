@@ -10,10 +10,11 @@ export default compose(
     return [
       {
         collection: "paths",
-        where: ["title", "==", query.q],
+        where: [["title", "==", query.q], ["blocked", "==", false]],
         limit: 10,
         orderBy: ["created", "desc"],
-        storeAs: "searchResults"
+        storeAs: "searchResults",
+        logListenerError: true
       }
     ];
   }),
