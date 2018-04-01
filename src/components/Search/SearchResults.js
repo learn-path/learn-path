@@ -12,8 +12,8 @@ const SearchResults = ({ searchResults }) => {
           <span className="card-image"></span>
           <div className="card-body">
             <h3>{path.title}</h3>
-            <p className="path-stars"><span className="icon-star"></span>0.0</p>
-            <p className="path-level">Intermediate</p>
+            <p className="rate"><span className="icon-star"></span>0.0</p>
+            <p className="level">{path.level}</p>
           </div>
         </Link>
       </li>

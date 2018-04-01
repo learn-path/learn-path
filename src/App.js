@@ -26,11 +26,10 @@ class App extends Component {
           </Link>
           <div className="user-buttons">
             {this.props.auth.isEmpty ? (
-              <Link className="btn" to="/login">
-                Login
+              <Link className="btn-login" to="/login">
               </Link>
             ) : (
-              <button className="btn" onClick={this.logout}>
+              <button className="btn-login" onClick={this.logout}>
                 Logout
               </button>
             )}
