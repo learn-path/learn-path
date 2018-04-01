@@ -18,6 +18,12 @@ class Path extends Component {
   render() {
     if (!this.props.path) return <span>Loading</span>;
     let p = this.props.path ? this.props.path : { items: [] };
+    if (p && p.blocked)
+      return (
+        <h2 style={{ color: "red", textAlign: "center" }}>
+          This path is blocked
+        </h2>
+      );
     return (
       <div className="path">
         {this.state.path ? (
