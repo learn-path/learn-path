@@ -10,7 +10,7 @@ export default compose(
     return [
       {
         collection: "paths",
-        where: ["private", "==", "false"],
+        where: ["private", "==", false],
         limit: 10,
         orderBy: ["created", "desc"]
       }
