@@ -1,5 +1,505 @@
+/** CSS variables **/
+:root {
+  --light-blue: #ecf2f6;
+  --light-blue-hover: #dae1e5;
+  --blue: #15a4fa;
+  --blue-hover: #0b8bd9;
+  --green: #57c94d;
+  --dark-gray: #293f4d;
+  --gray: #a7b1b8;
+  --light-gray: #dae1e5;
+  --yellow: #f7c428;
+}
+
+/** Structure **/
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+
+html {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background: var(--light-blue);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+  display: block;
+  margin: 15px 0;
+  font-weight: 400;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+}
+
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/** Nav **/
+.nav {
+  padding: 4px 0;
+  min-height: 50px;
+  background-color: white;
+  position: relative;
+}
+
+a.logo {
+  text-decoration: none;
+  color: var(--blue);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: block;
+  margin: 5px auto;
+  width: 160px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.user-buttons {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+}
+
+.btn-login {
+  height: 30px;
+  width: 30px;
+  display: block;
+  background-color: var(--gray);
+  mask-image: url(img/user.svg);
+  transition: opacity 0.2s;
+}
+
+.btn-login:hover {
+  opacity: 0.7;
+}
+
+/** Components **/
+.card {
+  background: white;
+  box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
+  margin-bottom: 10px;
+}
+
+/** Home **/
+.hero {
+  background-image: url(https://images.unsplash.com/photo-1518463892881-d587bf2c296a?ixlib=rb-0.3.5…EyMDd9&s=496e94f…&auto=format&fit=crop&w=2600&q=80);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-align: center;
+  color: white;
+  text-shadow: 0px 2px 4px rgba(41, 63, 77, 0.3);
+  min-height: 230px;
+  height: 230px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero .container {
+  padding: 0 30px 30px;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 0 5px;
+  padding: 0 0 5px;
+}
+
+.hero .lead {
+  margin: 0;
+}
+
+.search-bar {
+  position: relative;
+  margin: 30px 0;
+}
+
+.search-bar input::placeholder {
+  color: var(--gray);
+}
+
+.search-bar input {
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 1.35rem;
+  border: 0px;
+  width: 100%;
+  box-shadow: 0px 2px 10px rgba(41, 63, 77, 0.2);
+  color: var(--gray);
+}
+
+.search-bar button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  height: 36px;
+  width: 36px;
+  text-indent: -9000px;
+  background-color: var(--gray);
+  -webkit-mask-image: url(img/magnifying-glass.svg);
+  mask-image: url(img/magnifying-glass.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 22px 22px;
+  mask-size: 22px 22px;
+  -webkit-mask-position: 7px 7px;
+  mask-position: 7px 7px;
+}
+
+.search-bar button:focus {
+  outline: none;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0px 9px 20px rgba(75, 72, 72, 0.3);
+}
+
+.path-slider-wrapper {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.path-card {
+  background-color: white;
+  box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
+}
+
+.path-card a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.path-card a:hover {
+  opacity: 0.7;
+}
+
+.path-card-col {
+  margin-right: 15px;
+}
+
+.path-card-row {
+  margin-bottom: 15px;
+}
+.path-card-row a {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-image {
+  width: 100px;
+  height: 100px;
+  display: block;
+  background-color: var(--gray);
+}
+
+.path-card-col .card-image {
+  width: 140px;
+  height: 140px;
+}
+
+.card-body {
+  flex: 1;
+  padding: 5px 10px;
+}
+
+.card-body h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.card-body h3 a {
+  color: var(--dark-gray);
+  text-decoration: none;
+}
+
+.rate {
+  font-weight: 700;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.icon-star {
+  background-color: var(--yellow);
+  -webkit-mask-image: url(img/star.svg);
+  mask-image: url(img/star.svg);
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.level {
+  font-weight: 700;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/** Path List **/
+
+.path-list {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  list-style: none;
+}
+
+li.no-path-found {
+  list-style: none;
+  font-weight: 600;
+  font-size: 2rem;
+  font-variant: all-petite-caps;
+  color: var(--dark-gray);
+  text-align: center;
+  margin-top: 80px;
+}
+
+/** Path page **/
+.path .header {
+  background: white;
+  box-shadow: 0px 4px 4px rgba(4, 48, 74, 0.08);
+  padding: 15px 0;
+  z-index: 999;
+  position: relative;
+}
+.path-title {
+  min-height: 90px;
+  margin-bottom: 15px;
+}
+
+.path-title div:first-child span {
+  font-size: 1.8rem;
+  margin-left: 20px;
+  color: #293f4d;
+}
+
+.path-title .path-image {
+  min-width: 90px;
+  min-height: 90px;
+  content: "";
+  float: left;
+  background-color: var(--gray);
+}
+
+.path-info {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #dae1e5;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.path-info div,
+.path-info span {
+  flex-grow: 1;
+}
+
+.path-info .subscribers,
+.path-info .level,
+.path-info .ratings .rate {
+  display: block;
+  color: var(--dark-gray);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.path-info .subscribers::before,
+.path-info .level::before,
+.path-info .ratings .count {
+  display: block;
+  color: var(--gray);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.path-info .subscribers::before {
+  content: "Subscribers";
+}
+
+.path-info .level::before {
+  content: "Level";
+}
+.user-profile {
+  border-bottom: 1px solid var(--light-gray);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.user-profile-image {
+  width: 70px;
+  height: 70px;
+  display: block;
+  background-color: var(--gray);
+  border-radius: 100%;
+}
+
+.user-profile-body {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.user-profile h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark-gray);
+  margin: 0;
+}
+
+.user-profile p {
+  display: block;
+  margin: 0px;
+  color: var(--dark-gray);
+  font-size: 0.85rem;
+}
+
+.path .details {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+}
+
+.path .details div div span:first-of-type {
+  padding-top: 10px;
+  font-size: 1.7rem;
+  color: var(--dark-gray);
+  display: block;
+}
+
+.path-item-list {
+  list-style-type: unset;
+  -webkit-padding-start: 0px;
+  list-style: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.path-item {
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.path-item .path-item-link {
+  padding: 15px 50px 15px 15px;
+  display: block;
+  text-decoration: none;
+  color: var(--dark-gray);
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: opacity 0.2s;
+  background: url(img/external-link-symbol.svg) no-repeat right 15px top 17px;
+  background-size: 20px 20px;
+}
+
+.path-item .path-item-link:hover {
+  opacity: 0.7;
+}
+span.item-command {
+  margin-top: 15px;
+  color: var(--gray);
+  margin-right: 10px;
+}
+
+span.path-command {
+  margin-top: 20px;
+  color: var(--blue);
+  margin-right: 10px;
+}
+
+/** Buttons **/
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--light-blue);
+  color: var(--blue);
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--light-blue-hover);
+}
+
+.btn-large {
+  font-size: 1.2rem;
+}
+
+.btn-blue {
+  background: var(--blue);
+  color: white;
+}
+
+.btn-blue:hover {
+  background: var(--blue-hover);
+  color: white;
+}
+
+.btn-subscribe {
+  width: 100%;
+  font-weight: 700;
+}
+
+/** Forms **/
+.login-form {
+  width: 60%;
+  height: 80%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  margin-top: 3%;
+  box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
+  padding: 20px;
 }
