@@ -26,12 +26,34 @@ class App extends Component {
           </Link>
           <div className="user-buttons">
             {this.props.auth.isEmpty ? (
-              <Link className="btn-login" to="/login">
-              </Link>
+              <Link className="btn-login" to="/login" />
             ) : (
-              <button className="btn-login" onClick={this.logout}>
-                Logout
-              </button>
+              <div
+                style={{
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  width: 30,
+                  height: 30,
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  userSelect: "none"
+                }}
+              >
+                <img
+                  onClick={this.logout}
+                  alt="LOGOUT"
+                  src={this.props.auth.photoURL}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    textAlign: "center",
+                    objectFit: "cover"
+                  }}
+                />
+              </div>
             )}
           </div>
         </header>

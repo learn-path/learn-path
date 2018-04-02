@@ -2,7 +2,7 @@ import React from "react";
 import MyPaths from "./MyPaths";
 
 export default () => (
-  <div class="container">
+  <div className="container">
     <span className="title">Your Paths</span>
     <MyPaths />
   </div>
