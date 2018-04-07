@@ -7,6 +7,22 @@ cache:
   directories:
   - node_modules
   - functions/node_modules
+before_script:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      echo "inserting production environment file";
+      echo "export const config = {
+        production: true,
+        env: "prod",
+        firebase: {
+          apiKey: "AIzaSyBN2Pj8ficQ1CSJ0FTOBWVTbbPEH-luJCQ",
+          authDomain: "learnpath-35e60.firebaseapp.com",
+          databaseURL: "https://learnpath-35e60.firebaseio.com",
+          projectId: "learnpath-35e60",
+          storageBucket: "learnpath-35e60.appspot.com",
+          messagingSenderId: "153253405177"
+        }
+      };" > src/config/config.js;
+    fi
 script:
 - npm test -- --coverage
 - npm run build

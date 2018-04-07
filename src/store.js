@@ -7,17 +7,9 @@ import { reactReduxFirebase } from "react-redux-firebase";
 import { reduxFirestore } from "redux-firestore";
 import firebase from "firebase";
 import "firebase/firestore";
+import { config } from "./config/config";
 
 export const history = createHistory();
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBN2Pj8ficQ1CSJ0FTOBWVTbbPEH-luJCQ",
-  authDomain: "learnpath-35e60.firebaseapp.com",
-  databaseURL: "https://learnpath-35e60.firebaseio.com",
-  projectId: "learnpath-35e60",
-  storageBucket: "learnpath-35e60.appspot.com",
-  messagingSenderId: "153253405177"
-};
 
 // react-redux-firebase config
 const rrfConfig = {
@@ -25,7 +17,7 @@ const rrfConfig = {
   useFirestoreForProfile: true
 };
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config.firebase);
 firebase.firestore();
 
 // Add reactReduxFirebase enhancer when making store creator
