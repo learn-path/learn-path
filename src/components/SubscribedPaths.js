@@ -44,10 +44,17 @@ export default compose(
     subscribedpaths: firestore.ordered.paths
   })),
   firestoreConnect(props => {
+    if (!props.auth.uid) {
+      return [  
+      ]
+    }
     return [
       {
-        collection: "paths",
-        where: ["author", "==", props.auth.uid],
+        collection: "users",
+        doc: props.auth.uid,
+        subcollections: [
+          { collection: "subscribed_paths" }
+        ],
         limit: 10,
         orderBy: ["created", "desc"]
       }
