@@ -2,7 +2,31 @@ import React from "react";
 import IconProfile from "../../img/profile.svg";
 import ToggleButton from "react-toggle-button";
 
-const PathHeader = ({ path, editMode, setEdit, auth, togglePrivate }) => {
+const PathHeader = ({
+  path,
+  editMode,
+  setEdit,
+  auth,
+  togglePrivate,
+  subscribed,
+  toggleSubscribe
+}) => {
+  console.log(subscribed);
+  let subscribeButton = subscribed ? (
+    <button
+      className="btn btn-blue btn-large btn-subscribe"
+      onClick={toggleSubscribe}
+    >
+      Unsubscribe
+    </button>
+  ) : (
+    <button
+      className="btn btn-blue btn-large btn-subscribe"
+      onClick={toggleSubscribe}
+    >
+      Subscribe
+    </button>
+  );
   if (!path) return "";
   return (
     <div className="header">
@@ -49,9 +73,7 @@ const PathHeader = ({ path, editMode, setEdit, auth, togglePrivate }) => {
             <ToggleButton value={!path.private} onToggle={togglePrivate} />
           )}
         </div>
-        <button className="btn btn-blue btn-large btn-subscribe">
-          Subscribe
-        </button>
+        {subscribeButton}
       </div>
     </div>
   );

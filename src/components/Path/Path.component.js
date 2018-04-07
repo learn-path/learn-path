@@ -76,6 +76,30 @@ class Path extends Component {
       newItem: false
     });
   };
+
+  handleSubscribe = () => {
+    if (this.props.subscribed) {
+      console.log("UNS");
+      this.props.firebase
+        .firestore()
+        .collection("users")
+        .doc(this.props.auth.uid)
+        .collection("subscribed_paths")
+        .doc(this.props.id)
+        .delete();
+    } else {
+      this.props.firebase
+        .firestore()
+        .collection("users")
+        .doc(this.props.auth.uid)
+        .collection("subscribed_paths")
+        .doc(this.props.id)
+        .set({
+          on: new Date()
+        });
+    }
+  };
+
   render() {
     if (!isLoaded("paths")) return <span>Loading</span>;
     if (!this.props.path) {
@@ -102,7 +126,12 @@ class Path extends Component {
             handleSave={this.handlePathSave}
           />
         ) : (
-          <PathHeader path={p} setEdit={this.setEdit("path")} {...this.props} />
+          <PathHeader
+            path={p}
+            toggleSubscribe={this.handleSubscribe}
+            setEdit={this.setEdit("path")}
+            {...this.props}
+          />
         )}
         <div className="details">
           <div className="container">
