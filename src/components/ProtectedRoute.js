@@ -1,13 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
+import Denied from "./Denied";
 
-const ProtectedRoute = ({ component: Component, auth, ...rest }) => (
+const ProtectedRoute = ({ component: Component, profile, roles, ...rest }) => (
   <Route
     {...rest}
     render={props => {
-      return !auth.isEmpty === true ? (
-        <Component {...props} />
+      return !profile.isEmpty === true ? (
+        roles && profile.role && profile.role !== roles ? (
+          <Denied />
+        ) : (
+          <Component {...props} />
+        )
       ) : (
         <Redirect
           to={{
@@ -20,4 +25,6 @@ const ProtectedRoute = ({ component: Component, auth, ...rest }) => (
   />
 );
 
-export default connect(({ firebase: { auth } }) => ({ auth }))(ProtectedRoute);
+export default connect(({ firebase: { profile } }) => ({ profile }))(
+  ProtectedRoute
+);

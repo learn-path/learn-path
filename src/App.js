@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
 import About from "./components/About";
+import Admin from "./components/Admin";
 import Home from "./components/Home";
 import SearchPaths from "./components/Search/SearchPaths";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -65,6 +66,12 @@ class App extends Component {
             <Route exact path="/paths/search" component={SearchPaths} />
             <Route exact path="/login" component={Login} />
             <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+            <ProtectedRoute
+              exact
+              path="/admin"
+              roles="admin"
+              component={Admin}
+            />
           </Switch>
         </main>
       </div>
