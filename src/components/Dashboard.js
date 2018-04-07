@@ -1,5 +1,6 @@
 import React from "react";
 import MyPaths from "./MyPaths";
+import SubscribedPaths from "./SubscribedPaths";
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
@@ -22,10 +23,7 @@ export default () => (
       </TabPane>
       <TabPane tab='Subscribed Paths' key="2">
         <span className="title">Subscribed Paths</span>
-        <ul>
-          <li>Path 1</li>
-          <li>Path 2</li>
-        </ul>
+        <SubscribedPaths />
       </TabPane>
     </Tabs>
     

@@ -587,7 +587,6 @@ span.path-command {
 .rc-tabs-top .rc-tabs-tab {
   float: left;
   height: 100%;
-  margin-right: 30px;
 }
 
 .rc-tabs-tab-active, .rc-tabs-tab-active:hover {
