@@ -10,7 +10,7 @@ const google = {
   type: "popup"
 };
 export const Login = ({ firebase, profile, auth }) => {
-  if (auth.uid) {
+  if (auth.uid && profile.isLoaded) {
     if (profile.role && profile.role === "admin")
       return <Redirect to="/admin" />;
     return <Redirect to="/dashboard" />;

@@ -1,13 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { Route, Redirect } from "react-router-dom";
 import Denied from "./Denied";
+import { withFirebase } from "react-redux-firebase";
 
 const ProtectedRoute = ({
   component: Component,
   auth,
   profile,
   roles,
+  firebase,
   ...rest
 }) => {
   if (profile.isLoaded && profile.isEmpty) {
@@ -20,6 +23,7 @@ const ProtectedRoute = ({
     );
   }
   if (!auth.isLoaded || profile.isEmpty) return <span>Loading</span>;
+  if (profile.blocked) return <span>You've been blocked by an Admin</span>;
   return (
     <Route
       {...rest}
@@ -44,7 +48,10 @@ const ProtectedRoute = ({
   );
 };
 
-export default connect(({ firebase: { auth, profile } }) => ({
-  auth,
-  profile
-}))(ProtectedRoute);
+export default compose(
+  connect(({ firebase: { auth, profile } }) => ({
+    auth,
+    profile
+  })),
+  withFirebase
+)(ProtectedRoute);
