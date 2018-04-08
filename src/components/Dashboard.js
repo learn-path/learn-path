@@ -31,6 +31,10 @@ const Dashboard = ({ auth, profile }) => {
           <span className="title">Subscribed Paths</span>
           <SubscribedPaths />
         </TabPane>
+        <TabPane tab="Your Profile" key="3">
+          <span className="title">Your Profile</span>
+          <Profile profile={profile} full={true} />
+        </TabPane>
       </Tabs>
     </div>
   );

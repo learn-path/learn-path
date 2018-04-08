@@ -26,6 +26,13 @@ class Profile extends Component {
   };
 
   render() {
+    let skipButton = this.props.full ? (
+      ""
+    ) : (
+      <button className="btn btn-blue btn-subscribe" onClick={this.handleSkip}>
+        SKIP
+      </button>
+    );
     return (
       <div className="container">
         <div
@@ -60,12 +67,7 @@ class Profile extends Component {
             >
               SAVE
             </button>
-            <button
-              className="btn btn-blue btn-subscribe"
-              onClick={this.handleSkip}
-            >
-              SKIP
-            </button>
+            {skipButton}
           </div>
         </div>
       </div>
