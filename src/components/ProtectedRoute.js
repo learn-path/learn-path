@@ -10,6 +10,15 @@ const ProtectedRoute = ({
   roles,
   ...rest
 }) => {
+  if (profile.isLoaded && profile.isEmpty) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/login"
+        }}
+      />
+    );
+  }
   if (!auth.isLoaded || profile.isEmpty) return <span>Loading</span>;
   return (
     <Route
