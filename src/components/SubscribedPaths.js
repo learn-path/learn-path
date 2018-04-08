@@ -41,22 +41,20 @@ export default compose(
   connect(({ firebase: { auth }, firestore }) => ({
     auth,
     firestore,
-    subscribedpaths: firestore.ordered.paths
+    subscribedpaths: firestore.ordered.subscribedPaths
   })),
   firestoreConnect(props => {
     if (!props.auth.uid) {
-      return [  
-      ]
+      return [];
     }
     return [
       {
         collection: "users",
         doc: props.auth.uid,
-        subcollections: [
-          { collection: "subscribed_paths" }
-        ],
+        subcollections: [{ collection: "subscribed_paths" }],
         limit: 10,
-        orderBy: ["created", "desc"]
+        orderBy: ["on", "desc"],
+        storeAs: "subscribedPaths"
       }
     ];
   })

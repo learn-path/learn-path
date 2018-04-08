@@ -3,28 +3,39 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import Denied from "./Denied";
 
-const ProtectedRoute = ({ component: Component, profile, roles, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => {
-      return !profile.isEmpty === true ? (
-        roles && profile.role && profile.role !== roles ? (
-          <Denied />
+const ProtectedRoute = ({
+  component: Component,
+  auth,
+  profile,
+  roles,
+  ...rest
+}) => {
+  if (!auth.isLoaded || profile.isEmpty) return <span>Loading</span>;
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        return !auth.isEmpty ? (
+          roles && profile.role && profile.role !== roles ? (
+            <Denied />
+          ) : (
+            <Component {...props} />
+          )
         ) : (
-          <Component {...props} />
-        )
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: props.location }
-          }}
-        />
-      );
-    }}
-  />
-);
+          // <span>OPS</span>
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
 
-export default connect(({ firebase: { profile } }) => ({ profile }))(
-  ProtectedRoute
-);
+export default connect(({ firebase: { auth, profile } }) => ({
+  auth,
+  profile
+}))(ProtectedRoute);

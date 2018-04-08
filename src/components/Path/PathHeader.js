@@ -11,7 +11,6 @@ const PathHeader = ({
   subscribed,
   toggleSubscribe
 }) => {
-  console.log(subscribed);
   let subscribeButton = subscribed ? (
     <button
       className="btn btn-blue btn-large btn-subscribe"

@@ -9,8 +9,8 @@ const google = {
   provider: "google",
   type: "popup"
 };
-export const Login = ({ firebase, profile }) => {
-  if (profile.uid) {
+export const Login = ({ firebase, profile, auth }) => {
+  if (auth.uid) {
     if (profile.role && profile.role === "admin")
       return <Redirect to="/admin" />;
     return <Redirect to="/dashboard" />;
@@ -34,5 +34,5 @@ Login.propTypes = {
 };
 export default compose(
   firebaseConnect(),
-  connect(({ firebase: { profile } }) => ({ profile }))
+  connect(({ firebase: { profile, auth } }) => ({ profile, auth }))
 )(Login);
