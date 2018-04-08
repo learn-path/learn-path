@@ -39,6 +39,7 @@ class Profile extends Component {
         <textarea
           style={{ fontSize: 12 }}
           name="short_desc"
+          defaultValue={this.props.profile.short_desc}
           cols={50}
           rows={5}
           onChange={this.handleChange}
@@ -50,10 +51,7 @@ class Profile extends Component {
             justifyContent: "space-between"
           }}
         >
-          <button
-            className="btn btn-blue"
-            onClick={this.handleSave}
-          >
+          <button className="btn btn-blue" onClick={this.handleSave}>
             Save profile
           </button>
           {skipButton}
