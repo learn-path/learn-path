@@ -206,6 +206,7 @@ a.logo {
 .path-slider-wrapper {
   display: flex;
   margin-bottom: 15px;
+  overflow-x: auto;
 }
 
 .path-card {
@@ -655,4 +656,64 @@ span.path-command {
 
 .rc-tabs-content .rc-tabs-tabpane {
   overflow: auto;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 25px;
+  height: 18px;
+  left: 15px;
+  top: 17px;
+}
+ 
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: var(--gray);
+  height: 10%;
+}
+ 
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+ 
+/* Color/shape of close button cross */
+.bm-cross {
+  background: var(--gray);
+}
+
+.bm-menu-wrap {
+  top: 0;
+}
+ 
+/* General sidebar styles */
+.bm-menu {
+  background: var(--dark-gray);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+ 
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: var(--dark-gray);
+}
+ 
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.menu-item {
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+ 
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
 }

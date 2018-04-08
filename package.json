@@ -11,6 +11,7 @@
     "query-string": "^5.0.0",
     "rc-tabs": "^9.2.4",
     "react": "^16.2.0",
+    "react-burger-menu": "^2.4.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-redux-firebase": "^2.0.5",
