@@ -83,6 +83,7 @@ class App extends Component {
                   />
                 </div>
                 <Link className="menu-item" to="/dashboard" onClick={() => this.closeMenu()}>Dashboard</Link>
+                <Link className="menu-item" to="/admin" onClick={() => this.closeMenu()}>Admin</Link>
                 <Link className="menu-item" to="/" onClick={this.logout}>Logout</Link>
               </div>
             )}

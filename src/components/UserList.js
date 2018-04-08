@@ -14,11 +14,8 @@ const UserList = ({ users, toggleBlock }) => {
     <li className="no-path-found">No user added yet</li>
   );
   return (
-    <div className="container">
-      <ul
-        className="path-item-list"
-        style={{ display: "flex", justifyContent: "left" }}
-      >
+    <div>
+      <ul className="path-item-list">
         {list}
       </ul>
     </div>

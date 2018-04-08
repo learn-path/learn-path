@@ -193,7 +193,7 @@ a.logo {
 
 /** Home **/
 .hero {
-  background-image: url(https://images.unsplash.com/photo-1518463892881-d587bf2c296a?ixlib=rb-0.3.5…EyMDd9&s=496e94f…&auto=format&fit=crop&w=2600&q=80);
+  background-image: url(img/banner.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
   text-align: center;
@@ -203,6 +203,24 @@ a.logo {
   height: 230px;
   display: flex;
   align-items: flex-end;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    height: 500px;
+  }
 }
 
 .hero .container {
@@ -534,10 +552,10 @@ label {
   padding: .375rem .75rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
+  color: var(--dark-gray);
+  background-color: white;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--light-gray);
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -545,6 +563,15 @@ label {
 .path-item-form {
   padding: 15px;
   margin-top: 15px;
+}
+
+/** Admin **/
+
+.blocked-box span, .blocked-toggle {
+  float: left;
+}
+.blocked-box span {
+  margin-right: 10px;
 }
 
 /** Buttons **/

@@ -70,7 +70,6 @@ class PathItem extends Component {
         </a>
         <div>
           <button
-            style={{ paddingRight: 10 }}
             onClick={this.setEdit}
             className="btn item-command"
           >
