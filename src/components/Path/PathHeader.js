@@ -31,16 +31,17 @@ const PathHeader = ({
     <div className="header">
       <div className="container">
         <div
-          className="path-title"
-          style={{ display: "flex", justifyContent: "space-between" }}
+          className="path-header"
+          style={{ display: "flex" }}
         >
-          <div>
-            <div className="path-image" />
-            <span>{path.title}</span>
+          <div className="path-image" />
+          <div className="path-header-boddy">
+            <span className="path-title">{path.title}</span>  
+            <span className="path-desc">{path.short_desc}</span>
           </div>
-          <div>
-            <span onClick={setEdit}>Edit</span>
-          </div>
+        <div>
+          <button className="btn" onClick={setEdit}>Edit</button>
+        </div>
         </div>
         <div className="path-info">
           <div className="ratings">

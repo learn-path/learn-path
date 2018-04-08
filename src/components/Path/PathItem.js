@@ -59,7 +59,7 @@ class PathItem extends Component {
     return (
       <li
         className="card path-item"
-        style={{ display: "flex", justifyContent: "space-between" }}
+        style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
       >
         <a
           href={this.props.item.url}
@@ -68,13 +68,15 @@ class PathItem extends Component {
         >
           {this.props.item.title}
         </a>
-        <span
-          style={{ paddingRight: 10 }}
-          onClick={this.setEdit}
-          className="item-command"
-        >
-          Edit
-        </span>
+        <div>
+          <button
+            style={{ paddingRight: 10 }}
+            onClick={this.setEdit}
+            className="btn item-command"
+          >
+            Edit
+          </button>
+        </div>
       </li>
     );
   }

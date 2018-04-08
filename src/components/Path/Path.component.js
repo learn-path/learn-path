@@ -135,12 +135,10 @@ class Path extends Component {
         )}
         <div className="details">
           <div className="container">
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span>Start your journey</span>
-              <span onClick={this.setEdit("newItem")} className="path-command">
-                Add
-              </span>
-            </div>
+            <span className="title">Start your journey</span>         
+            <button onClick={this.setEdit("newItem")} className="btn btn-blue path-command">
+              Add new item
+            </button>
             {this.state.newItem ? (
               <PathItemEdit
                 handleChange={this.handleChange}

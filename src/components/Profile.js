@@ -34,41 +34,29 @@ class Profile extends Component {
       </button>
     );
     return (
-      <div className="container">
+      <div>
+        <h3>{this.props.message}</h3>
+        <textarea
+          style={{ fontSize: 12 }}
+          name="short_desc"
+          cols={50}
+          rows={5}
+          onChange={this.handleChange}
+          placeholder="I'm John, I've been a Full Stack Software developer for 10 years and I love Star Wars and cats"
+        />
         <div
           style={{
-            backgroundColor: "white",
-            textAlign: "center",
-            marginTop: 20,
-            maxWidth: 800,
-            marginLeft: "auto",
-            marginRight: "auto",
-            padding: 20
+            display: "flex",
+            justifyContent: "space-between"
           }}
         >
-          <h3>{this.props.message}</h3>
-          <textarea
-            style={{ fontSize: 12 }}
-            name="short_desc"
-            cols={50}
-            rows={5}
-            onChange={this.handleChange}
-            placeholder="I'm John, I've been a Full Stack Software developer for 10 years and I love Star Wars and cats"
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between"
-            }}
+          <button
+            className="btn btn-blue"
+            onClick={this.handleSave}
           >
-            <button
-              className="btn btn-blue btn-subscribe"
-              onClick={this.handleSave}
-            >
-              SAVE
-            </button>
-            {skipButton}
-          </div>
+            Save profile
+          </button>
+          {skipButton}
         </div>
       </div>
     );

@@ -72,7 +72,7 @@ class App extends Component {
                   }}
                 >
                   <img
-                    alt="LOGOUT"
+                    alt="Profile"
                     src={this.props.auth.photoURL}
                     style={{
                       width: "100%",

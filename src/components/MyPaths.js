@@ -31,7 +31,7 @@ const MyPaths = ({ mypaths }) => {
     <li className="no-path-found">No path added yet</li>
   );
   return (
-    <div className="container">
+    <div>
       <ul className="path-item-list">{list}</ul>
     </div>
   );

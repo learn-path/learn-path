@@ -119,6 +119,71 @@ a.logo {
   opacity: 0.7;
 }
 
+
+
+/** Hamburger Menu **/
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 25px;
+  height: 18px;
+  left: 15px;
+  top: 17px;
+}
+ 
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: var(--gray);
+  height: 10%!important;
+}
+ 
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+ 
+/* Color/shape of close button cross */
+.bm-cross {
+  background: var(--gray);
+}
+
+.bm-menu-wrap {
+  top: 0;
+}
+ 
+/* General sidebar styles */
+.bm-menu {
+  background: var(--dark-gray);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+ 
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: var(--dark-gray);
+}
+ 
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.menu-item {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+ 
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+}
+
 /** Components **/
 .card {
   background: white;
@@ -305,6 +370,7 @@ li.no-path-found {
 }
 
 /** Path page **/
+
 .path .header {
   background: white;
   box-shadow: 0px 4px 4px rgba(4, 48, 74, 0.08);
@@ -312,23 +378,28 @@ li.no-path-found {
   z-index: 999;
   position: relative;
 }
-.path-title {
+.path-header {
   min-height: 90px;
   margin-bottom: 15px;
 }
 
-.path-title div:first-child span {
+.path-title {
   font-size: 1.8rem;
-  margin-left: 20px;
-  color: #293f4d;
+  color: var(--dark-gray);
+  display: block;
 }
 
-.path-title .path-image {
+.path-image {
   min-width: 90px;
   min-height: 90px;
   content: "";
   float: left;
   background-color: var(--gray);
+}
+
+.path-header-boddy {
+  padding-left: 15px;
+  flex-grow: 1;
 }
 
 .path-info {
@@ -409,13 +480,6 @@ li.no-path-found {
   display: flex;
 }
 
-.path .details div div span:first-of-type {
-  padding-top: 10px;
-  font-size: 1.7rem;
-  color: var(--dark-gray);
-  display: block;
-}
-
 .path-item-list {
   list-style-type: unset;
   -webkit-padding-start: 0px;
@@ -439,21 +503,48 @@ li.no-path-found {
   transition: opacity 0.2s;
   background: url(img/external-link-symbol.svg) no-repeat right 15px top 17px;
   background-size: 20px 20px;
+  flex-grow: 1;
 }
 
 .path-item .path-item-link:hover {
   opacity: 0.7;
 }
-span.item-command {
-  margin-top: 15px;
-  color: var(--gray);
+.item-command {
   margin-right: 10px;
 }
 
-span.path-command {
-  margin-top: 20px;
-  color: var(--blue);
-  margin-right: 10px;
+
+/** Path Edit **/
+
+.form-box {
+  margin-bottom: 15px;
+  display: inline-block;
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.path-item-form {
+  padding: 15px;
+  margin-top: 15px;
 }
 
 /** Buttons **/
@@ -506,10 +597,6 @@ span.path-command {
 }
 
 /** Tabs **/
-.rc-tabs-top {
-  border-bottom: 2px solid #f3f3f3;
-}
-
 .rc-tabs {
   box-sizing: border-box;
   position: relative;
@@ -517,7 +604,7 @@ span.path-command {
 }
 
 .rc-tabs-top .rc-tabs-bar {
-  border-bottom: 1px solid #f3f3f3;
+  margin-top: 15px;
 }
 
 .rc-tabs-bar, .rc-tabs-nav-container {
@@ -656,64 +743,4 @@ span.path-command {
 
 .rc-tabs-content .rc-tabs-tabpane {
   overflow: auto;
-}
-
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: absolute;
-  width: 25px;
-  height: 18px;
-  left: 15px;
-  top: 17px;
-}
- 
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: var(--gray);
-  height: 10%;
-}
- 
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
- 
-/* Color/shape of close button cross */
-.bm-cross {
-  background: var(--gray);
-}
-
-.bm-menu-wrap {
-  top: 0;
-}
- 
-/* General sidebar styles */
-.bm-menu {
-  background: var(--dark-gray);
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-}
- 
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: var(--dark-gray);
-}
- 
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
-}
-
-.menu-item {
-  display: block;
-  color: white;
-  text-decoration: none;
-}
- 
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-  top: 0;
 }
