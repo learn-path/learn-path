@@ -13,7 +13,7 @@ const ProtectedRoute = ({
   firebase,
   ...rest
 }) => {
-  if (profile.isLoaded && profile.isEmpty) {
+  if (profile.isLoaded && profile.isEmpty && auth.isLoaded && auth.isEmpty) {
     return (
       <Redirect
         to={{
@@ -29,13 +29,12 @@ const ProtectedRoute = ({
       {...rest}
       render={props => {
         return !auth.isEmpty ? (
-          roles && profile.role && profile.role !== roles ? (
+          roles && profile.role !== roles ? (
             <Denied />
           ) : (
             <Component {...props} />
           )
         ) : (
-          // <span>OPS</span>
           <Redirect
             to={{
               pathname: "/login",
