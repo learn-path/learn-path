@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "learnpath-35e60"
+    "default": "learnpath-35e60",
+    "dev": "lear-path-dev"
   }
 }
