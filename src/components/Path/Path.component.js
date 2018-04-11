@@ -79,7 +79,6 @@ class Path extends Component {
 
   handleSubscribe = () => {
     if (this.props.subscribed) {
-      console.log("UNS");
       this.props.firebase
         .firestore()
         .collection("users")
@@ -135,8 +134,11 @@ class Path extends Component {
         )}
         <div className="details">
           <div className="container">
-            <span className="title">Start your journey</span>         
-            <button onClick={this.setEdit("newItem")} className="btn btn-blue path-command">
+            <span className="title">Start your journey</span>
+            <button
+              onClick={this.setEdit("newItem")}
+              className="btn btn-blue path-command"
+            >
               Add new item
             </button>
             {this.state.newItem ? (

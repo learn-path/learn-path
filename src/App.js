@@ -12,48 +12,64 @@ import { firebaseConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import "./App.css";
-import { slide as Menu } from 'react-burger-menu'
+import { slide as Menu } from "react-burger-menu";
+import { getSearchKeyIfUserChanged } from "./actions/algolia";
 
 class App extends Component {
   logout = () => {
     this.props.firebase.auth().signOut();
   };
 
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       menuOpen: false
-    }
+    };
   }
 
   // This keeps your state in sync with the opening/closing of the menu
   // via the default means, e.g. clicking the X, pressing the ESC key etc.
-  handleStateChange (state) {
-    this.setState({menuOpen: state.isOpen})  
+  handleStateChange(state) {
+    this.setState({ menuOpen: state.isOpen });
   }
-  
+
   // This can be used to close the menu, e.g. when a user clicks a menu item
-  closeMenu () {
-    this.setState({menuOpen: false})
+  closeMenu() {
+    this.setState({ menuOpen: false });
   }
 
   // This can be used to toggle the menu, e.g. when using a custom icon
   // Tip: You probably want to hide either/both default icons if using a custom icon
   // See https://github.com/negomi/react-burger-menu#custom-icons
-  toggleMenu () {
-    this.setState({menuOpen: !this.state.menuOpen})
+  toggleMenu() {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
+  componentDidMount() {
+    const onAuthUser = this.props.onAuthUser;
+    this.props.firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        onAuthUser(user);
+      }
+    });
   }
 
   render() {
     return (
       <div>
         <header className="nav">
-          <Menu 
+          <Menu
             isOpen={this.state.menuOpen}
-            onStateChange={(state) => this.handleStateChange(state)}
+            onStateChange={state => this.handleStateChange(state)}
           >
             {this.props.auth.isEmpty ? (
-              <Link className="menu-item" to="/login" onClick={() => this.closeMenu()}>Login</Link>
+              <Link
+                className="menu-item"
+                to="/login"
+                onClick={() => this.closeMenu()}
+              >
+                Login
+              </Link>
             ) : (
               <div>
                 <div
@@ -82,9 +98,23 @@ class App extends Component {
                     }}
                   />
                 </div>
-                <Link className="menu-item" to="/dashboard" onClick={() => this.closeMenu()}>Dashboard</Link>
-                <Link className="menu-item" to="/admin" onClick={() => this.closeMenu()}>Admin</Link>
-                <Link className="menu-item" to="/" onClick={this.logout}>Logout</Link>
+                <Link
+                  className="menu-item"
+                  to="/dashboard"
+                  onClick={() => this.closeMenu()}
+                >
+                  Dashboard
+                </Link>
+                <Link
+                  className="menu-item"
+                  to="/admin"
+                  onClick={() => this.closeMenu()}
+                >
+                  Admin
+                </Link>
+                <Link className="menu-item" to="/" onClick={this.logout}>
+                  Logout
+                </Link>
               </div>
             )}
           </Menu>
@@ -110,7 +140,6 @@ class App extends Component {
                 }}
               >
                 <img
-                  //onClick={this.logout}
                   alt="LOGOUT"
                   src={this.props.auth.photoURL}
                   style={{
@@ -145,8 +174,17 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuthUser: user => {
+      dispatch(getSearchKeyIfUserChanged(user));
+    }
+  };
+};
+
 export default withRouter(
-  compose(firebaseConnect(), connect(({ firebase: { auth } }) => ({ auth })))(
-    App
-  )
+  compose(
+    firebaseConnect(),
+    connect(({ firebase: { auth } }) => ({ auth }), mapDispatchToProps)
+  )(App)
 );

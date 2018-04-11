@@ -1,12 +1,10 @@
 import React from "react";
-import { isLoaded } from "react-redux-firebase";
+import { connectHits } from "react-instantsearch/connectors";
 import SearchResultItem from "./SearchResultItem";
 
-const SearchResults = ({ searchResults }) => {
-  const list = !isLoaded(searchResults) ? (
-    "Loading"
-  ) : searchResults && searchResults.length ? (
-    searchResults.map(path => <SearchResultItem key={path.id} path={path} />)
+const SearchResults = connectHits(({ hits }) => {
+  const list = hits.length ? (
+    hits.map(path => <SearchResultItem key={path.objectID} path={path} />)
   ) : (
     <li className="no-path-found">No path found</li>
   );
@@ -16,6 +14,6 @@ const SearchResults = ({ searchResults }) => {
       <ul className="path-list">{list}</ul>
     </div>
   );
-};
+});
 
 export default SearchResults;

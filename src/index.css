@@ -119,8 +119,6 @@ a.logo {
   opacity: 0.7;
 }
 
-
-
 /** Hamburger Menu **/
 
 /* Position and sizing of burger button */
@@ -131,19 +129,19 @@ a.logo {
   left: 15px;
   top: 17px;
 }
- 
+
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: var(--gray);
-  height: 10%!important;
+  height: 10% !important;
 }
- 
+
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 24px;
   width: 24px;
 }
- 
+
 /* Color/shape of close button cross */
 .bm-cross {
   background: var(--gray);
@@ -152,19 +150,19 @@ a.logo {
 .bm-menu-wrap {
   top: 0;
 }
- 
+
 /* General sidebar styles */
 .bm-menu {
   background: var(--dark-gray);
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
- 
+
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: var(--dark-gray);
 }
- 
+
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
@@ -177,7 +175,7 @@ a.logo {
   text-decoration: none;
   margin-bottom: 10px;
 }
- 
+
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
@@ -239,16 +237,19 @@ a.logo {
   margin: 0;
 }
 
-.search-bar {
+.search-bar,
+.ais-search-bar {
   position: relative;
   margin: 30px 0;
 }
 
-.search-bar input::placeholder {
+.search-bar input::placeholder,
+.ais-search-bar input::placeholder {
   color: var(--gray);
 }
 
-.search-bar input {
+.search-bar input,
+.ais-search-bar input {
   padding: 6px 12px;
   border-radius: 5px;
   font-size: 1.35rem;
@@ -256,6 +257,10 @@ a.logo {
   width: 100%;
   box-shadow: 0px 2px 10px rgba(41, 63, 77, 0.2);
   color: var(--gray);
+}
+
+.ais-search-bar input {
+  padding-left: 25px;
 }
 
 .search-bar button {
@@ -281,7 +286,8 @@ a.logo {
   outline: none;
 }
 
-.search-bar input:focus {
+.search-bar input:focus,
+.ais-search-bar input:focus {
   outline: none;
   box-shadow: 0px 9px 20px rgba(75, 72, 72, 0.3);
 }
@@ -531,7 +537,6 @@ li.no-path-found {
   margin-right: 10px;
 }
 
-
 /** Path Edit **/
 
 .form-box {
@@ -543,21 +548,21 @@ li.no-path-found {
 label {
   display: inline-block;
   width: 100%;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .form-control {
   display: block;
   width: 100%;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--dark-gray);
   background-color: white;
   background-clip: padding-box;
   border: 1px solid var(--light-gray);
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .path-item-form {
@@ -567,7 +572,8 @@ label {
 
 /** Admin **/
 
-.blocked-box span, .blocked-toggle {
+.blocked-box span,
+.blocked-toggle {
   float: left;
 }
 .blocked-box span {
@@ -634,7 +640,8 @@ label {
   margin-top: 15px;
 }
 
-.rc-tabs-bar, .rc-tabs-nav-container {
+.rc-tabs-bar,
+.rc-tabs-nav-container {
   font-size: 14px;
   line-height: 1.5;
   box-sizing: border-box;
@@ -643,7 +650,7 @@ label {
   white-space: nowrap;
   outline: none;
   zoom: 1;
-  transition: padding .45s;
+  transition: padding 0.45s;
 }
 
 .rc-tabs-top .rc-tabs-nav-wrap {
@@ -654,7 +661,8 @@ label {
   overflow: hidden;
 }
 
-.rc-tabs-bar, .rc-tabs-nav-container {
+.rc-tabs-bar,
+.rc-tabs-nav-container {
   font-size: 14px;
   line-height: 1.5;
   white-space: nowrap;
@@ -664,7 +672,8 @@ label {
   width: 99999px;
 }
 
-.rc-tabs-bar, .rc-tabs-nav-container {
+.rc-tabs-bar,
+.rc-tabs-nav-container {
   font-size: 14px;
   line-height: 1.5;
   white-space: nowrap;
@@ -685,7 +694,8 @@ label {
   transform-origin: 0 0;
 }
 
-.rc-tabs-nav::before, .rc-tabs-nav::after {
+.rc-tabs-nav::before,
+.rc-tabs-nav::after {
   display: table;
   content: " ";
 }
@@ -704,7 +714,8 @@ label {
   height: 100%;
 }
 
-.rc-tabs-tab-active, .rc-tabs-tab-active:hover {
+.rc-tabs-tab-active,
+.rc-tabs-tab-active:hover {
   color: var(--blue);
   cursor: default;
   transform: translateZ(0);
@@ -753,7 +764,9 @@ label {
 }
 
 .rc-tabs-content-animated {
-  transition: transform 0.3s cubic-bezier(0.35, 0, 0.25, 1), margin-left 0.3s cubic-bezier(0.35, 0, 0.25, 1), margin-top 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+  transition: transform 0.3s cubic-bezier(0.35, 0, 0.25, 1),
+    margin-left 0.3s cubic-bezier(0.35, 0, 0.25, 1),
+    margin-top 0.3s cubic-bezier(0.35, 0, 0.25, 1);
   display: -ms-flexbox;
   display: flex;
   will-change: transform;

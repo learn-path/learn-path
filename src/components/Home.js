@@ -7,7 +7,9 @@ export default () => (
     <div className="hero">
       <div className="container">
         <h1>Learn more</h1>
-        <p className="lead">Explore teh best Learn Paths and improve your skills</p>
+        <p className="lead">
+          Explore the best Learn Paths and improve your skills
+        </p>
       </div>
     </div>
     <div className="container">
