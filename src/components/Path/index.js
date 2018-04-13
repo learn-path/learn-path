@@ -48,6 +48,13 @@ export default compose(
         { collection: "paths", doc: id },
         { private: !path.private }
       );
+    },
+
+    setRating:({firestore, path, id}) => (rate) => {
+      firestore.update(
+        { collection:"paths", doc: id},
+        { rating: rate}
+     );
     }
   })
 )(Path);

@@ -9,6 +9,7 @@ const PathHeader = ({
   setEdit,
   auth,
   togglePrivate,
+  setRating,
   subscribed,
   toggleSubscribe
 }) => {
@@ -48,7 +49,9 @@ const PathHeader = ({
           <div className="ratings">
             <span className="count">18 ratings</span>
             <span className="rate">
-              <Rating/>
+              <Rating
+                initialRating={path.rating}
+                onChange={setRating}/>
             </span>
           </div>
           <span className="subscribers">120,600</span>
