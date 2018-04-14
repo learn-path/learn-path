@@ -1,6 +1,8 @@
 "use strict";
 
 const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -37,10 +39,92 @@ exports.onPathChange = functions.firestore
     return index.saveObject(path);
   });
 
-// [START get_firebase_user]
-const admin = require("firebase-admin");
-admin.initializeApp();
+exports.aggregateRatingsOnCreate = functions.firestore
+  .document("paths/{pathId}/ratings/{ratingId}")
+  .onCreate((event, context) => {
+    // Get value of the newly added rating
+    const newData = event.data();
+    var ratingVal = newData.rating;
 
+    let firestore = admin.firestore();
+
+    // Get a reference to the path
+    var pathRef = firestore.collection("paths").doc(context.params.pathId);
+
+    // Update aggregations in a transaction
+    return firestore.runTransaction(transaction => {
+      return transaction.get(pathRef).then(pathDoc => {
+        // Compute new number of ratings
+        let newDocData = pathDoc.data();
+        let newNumRatings = (newDocData.numRatings || 0) + 1;
+
+        // Compute new average rating
+        let oldRatingTotal = newDocData.avgRating * newDocData.numRatings;
+        oldRatingTotal = oldRatingTotal || 0;
+        let newAvgRating = (oldRatingTotal + ratingVal) / newNumRatings;
+        if (newAvgRating > 5) {
+          newAvgRating = 5;
+        }
+        if (newAvgRating < 0) {
+          newAvgRating = 0;
+        }
+        // Update paths info
+        return transaction.update(pathRef, {
+          avgRating: newAvgRating,
+          numRatings: newNumRatings
+        });
+      });
+    });
+  });
+
+exports.aggregateRatingsOnUpdate = functions.firestore
+  .document("paths/{pathId}/ratings/{ratingId}")
+  .onUpdate((change, context) => {
+    // Get value of the newly added rating
+    const newData = change.after.data();
+    const oldData = change.before.data();
+
+    var ratingVal = newData.rating;
+    const previousValue = oldData.rating;
+
+    console.log(`UPDATE RATING ${previousValue} to ${ratingVal}`);
+
+    let firestore = admin.firestore();
+
+    // Get a reference to the path
+    var pathRef = firestore.collection("paths").doc(context.params.pathId);
+
+    // Update aggregations in a transaction
+    return firestore.runTransaction(transaction => {
+      return transaction.get(pathRef).then(pathDoc => {
+        // Compute new number of ratings
+        let newDocData = pathDoc.data();
+        let newNumRatings = newDocData.rating || 1;
+        // Compute new average rating
+        let oldRatingTotal = newDocData.avgRating * newDocData.numRatings;
+        oldRatingTotal = oldRatingTotal || 0;
+        oldRatingTotal -= previousValue;
+        let newAvgRating = ((oldRatingTotal || 0) + ratingVal) / newNumRatings;
+        if (newAvgRating > 5) {
+          newAvgRating = 5;
+        }
+        if (newAvgRating < 0) {
+          newAvgRating = 0;
+        }
+        console.log({
+          avgRating: newAvgRating,
+          numRatings: newNumRatings
+        });
+        // Update paths info
+        return transaction.update(pathRef, {
+          avgRating: newAvgRating,
+          numRatings: newNumRatings
+        });
+      });
+    });
+  });
+
+// [START get_firebase_user]
 function getFirebaseUser(req, res, next) {
   console.log("Check if request is authorized with Firebase ID token");
 
