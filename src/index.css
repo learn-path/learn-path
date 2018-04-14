@@ -537,6 +537,38 @@ li.no-path-found {
   margin-right: 10px;
 }
 
+.path-item-status {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-left: 15px;
+  position: relative;
+}
+
+.path-item-status:not(.checked) {
+  border: 2px solid #dae1e5;
+}
+
+.path-item-status.checked {
+  background-color: #57c94d;
+}
+
+.path-item-status.checked:before {
+  content: "";
+  width: 5px;
+  height: 8px;
+  display: block;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  position: absolute;
+  left: 7px;
+  top: 5px;
+  transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
 /** Path Edit **/
 
 .form-box {

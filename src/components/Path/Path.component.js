@@ -78,7 +78,7 @@ class Path extends Component {
   };
 
   handleSubscribe = () => {
-    if (this.props.subscribed) {
+    if (this.props.subscribed && this.props.subscribed.length) {
       this.props.firebase
         .firestore()
         .collection("users")
@@ -100,17 +100,18 @@ class Path extends Component {
   };
 
   render() {
+    const { auth, path } = this.props;
     if (!isLoaded("paths")) return <span>Loading</span>;
-    if (!this.props.path) {
+    if (!path) {
       return "";
     }
-    let p = this.props.path ? this.props.path : { items: [] };
+    let p = path ? path : { items: [] };
     let items = this.props.items ? this.props.items : [];
-    if (
-      p &&
-      p.blocked &&
-      (!this.props.auth || this.props.auth.uid === this.props.path.author)
-    )
+    const hasPrivilege = auth && !auth.isEmpty && path.author === auth.uid;
+    const subscribed_items = this.props.subscribed_items || {};
+    const isSubscribed =
+      this.props.subscribed && this.props.subscribed.length > 0;
+    if (p && p.blocked && !hasPrivilege)
       return (
         <h2 style={{ color: "red", textAlign: "center" }}>
           This path is blocked
@@ -129,6 +130,8 @@ class Path extends Component {
             path={p}
             toggleSubscribe={this.handleSubscribe}
             setEdit={this.setEdit("path")}
+            hasPrivilege={hasPrivilege}
+            isSubscribed={isSubscribed}
             {...this.props}
           />
         )}
@@ -155,6 +158,9 @@ class Path extends Component {
                   key={`p-item-${index}`}
                   pathId={this.props.id}
                   item={item}
+                  isSubscribed={isSubscribed}
+                  toggleDone={this.props.toggleDone}
+                  done={subscribed_items[item.id]}
                 />
               ))}
             </ul>

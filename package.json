@@ -23,7 +23,7 @@
     "react-toggle-button": "^2.2.0",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
-    "redux-firestore": "^0.3.2",
+    "redux-firestore": "github:thiagovice/redux-firestore#nested_collections",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {

@@ -34,6 +34,7 @@ class SearchResultItem extends Component {
 
   render() {
     let { path, auth } = this.props;
+    const hasPrivilege = !auth.isEmpty && path.author === auth.uid;
     return (
       <li
         className="card path-card path-card-row"
@@ -51,7 +52,7 @@ class SearchResultItem extends Component {
           </div>
         </Link>
         <div style={{ padding: 20 }}>
-          {auth.isEmpty || path.author !== auth.uid ? (
+          {!hasPrivilege ? (
             ""
           ) : (
             <div>

@@ -11,7 +11,34 @@ export default compose(
     firestore
   })),
   firestoreConnect(props => {
-    // Set listeners based on props (prop is route parameter from react-router in this case)
+    const authedQueries =
+      props.auth && props.auth.uid
+        ? [
+            {
+              collection: "users",
+              doc: props.auth.uid,
+              subcollections: [
+                {
+                  collection: "subscribed_paths",
+                  doc: props.match.params.slurg
+                }
+              ],
+              storeAs: "subscribed"
+            },
+            {
+              collection: "users",
+              doc: props.auth.uid,
+              subcollections: [
+                {
+                  collection: "subscribed_paths",
+                  doc: props.match.params.slurg,
+                  subcollections: [{ collection: "items" }]
+                }
+              ],
+              storeAs: "subscribed_items"
+            }
+          ]
+        : [];
     return [
       {
         collection: "paths",
@@ -23,23 +50,17 @@ export default compose(
         subcollections: [{ collection: "items" }],
         storeAs: "items"
       },
-      {
-        collection: "users",
-        doc: props.auth.uid || "1",
-        subcollections: [
-          { collection: "subscribed_paths", doc: props.match.params.slurg }
-        ],
-        storeAs: "subscribed"
-      }
+      ...authedQueries
     ];
   }),
   connect(({ firestore, firebase }, props) => {
     return {
       path: getVal(firestore, `data/paths/${props.match.params.slurg}`),
       items: firestore.ordered.items,
-      subscribed: firestore.data.subscribed,
+      subscribed: firestore.ordered.subscribed,
       auth: firebase.auth,
-      id: `${props.match.params.slurg}`
+      id: `${props.match.params.slurg}`,
+      subscribed_items: firestore.data.subscribed_items
     };
   }),
   withHandlers({
@@ -47,6 +68,13 @@ export default compose(
       firestore.update(
         { collection: "paths", doc: id },
         { private: !path.private }
+      );
+    },
+    toggleDone: ({ firestore, id, auth }) => (itemId, done) => {
+      firestore.set(
+        `users/${auth.uid}/subscribed_paths/${id}/items/${itemId}`,
+        { done: done },
+        { merge: true }
       );
     }
   })

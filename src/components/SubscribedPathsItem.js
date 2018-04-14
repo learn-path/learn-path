@@ -15,10 +15,11 @@ const enhance = compose(
     ];
   }),
   connect(({ firebase: { auth }, firestore, props }) => {
+    if (!firestore.ordered.loadedPath) return {};
     return {
       auth,
       firestore,
-      loadedPath: firestore.data.loadedPath
+      loadedPath: firestore.ordered.loadedPath[0]
     };
   })
 );
