@@ -543,6 +543,7 @@ li.no-path-found {
   border-radius: 100%;
   margin-left: 15px;
   position: relative;
+  cursor: pointer;
 }
 
 .path-item-status:not(.checked) {
