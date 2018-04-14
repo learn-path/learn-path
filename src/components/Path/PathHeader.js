@@ -1,6 +1,7 @@
 import React from "react";
 import IconProfile from "../../img/profile.svg";
 import ToggleButton from "react-toggle-button";
+import Rating from "react-rating";
 
 const PathHeader = ({
   path,
@@ -10,7 +11,8 @@ const PathHeader = ({
   togglePrivate,
   isSubscribed,
   toggleSubscribe,
-  hasPrivilege
+  hasPrivilege,
+  setRating
 }) => {
   let subscribeButton = isSubscribed ? (
     <button
@@ -47,7 +49,7 @@ const PathHeader = ({
           <div className="ratings">
             <span className="count">18 ratings</span>
             <span className="rate">
-              <span className="icon-star" />4.9
+              <Rating initialRating={path.rating} onChange={setRating} />
             </span>
           </div>
           <span className="subscribers">120,600</span>

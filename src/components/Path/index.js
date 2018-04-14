@@ -76,6 +76,9 @@ export default compose(
         { done: done },
         { merge: true }
       );
+    },
+    setRating: ({ firestore, path, id }) => rate => {
+      firestore.update({ collection: "paths", doc: id }, { rating: rate });
     }
   })
 )(Path);
