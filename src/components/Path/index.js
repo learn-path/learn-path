@@ -36,7 +36,8 @@ export default compose(
                 }
               ],
               storeAs: "subscribed_items"
-            }
+            },
+            `paths/${props.match.params.slurg}/ratings/${props.auth.uid}`
           ]
         : [];
     return [
@@ -60,7 +61,11 @@ export default compose(
       subscribed: firestore.ordered.subscribed,
       auth: firebase.auth,
       id: `${props.match.params.slurg}`,
-      subscribed_items: firestore.data.subscribed_items
+      subscribed_items: firestore.data.subscribed_items,
+      my_ratings:
+        firestore.ordered.paths_ratings && firestore.ordered.paths_ratings[0]
+          ? firestore.ordered.paths_ratings[0]
+          : false
     };
   }),
   withHandlers({
@@ -77,8 +82,8 @@ export default compose(
         { merge: true }
       );
     },
-    setRating: ({ firestore, path, id }) => rate => {
-      firestore.update({ collection: "paths", doc: id }, { rating: rate });
+    setRating: ({ firestore, path, id, auth }) => rate => {
+      firestore.set(`paths/${id}/ratings/${auth.uid}`, { rating: rate });
     }
   })
 )(Path);

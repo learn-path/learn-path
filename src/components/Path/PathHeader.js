@@ -1,7 +1,7 @@
 import React from "react";
 import IconProfile from "../../img/profile.svg";
 import ToggleButton from "react-toggle-button";
-import Rating from "react-rating";
+import PathRating from "./PathRating";
 
 const PathHeader = ({
   path,
@@ -12,7 +12,8 @@ const PathHeader = ({
   isSubscribed,
   toggleSubscribe,
   hasPrivilege,
-  setRating
+  setRating,
+  my_ratings
 }) => {
   let subscribeButton = isSubscribed ? (
     <button
@@ -30,6 +31,7 @@ const PathHeader = ({
     </button>
   );
   if (!path) return "";
+  const myRating = my_ratings ? my_ratings.rating : false;
   return (
     <div className="header">
       <div className="container">
@@ -49,7 +51,12 @@ const PathHeader = ({
           <div className="ratings">
             <span className="count">18 ratings</span>
             <span className="rate">
-              <Rating initialRating={path.rating} onChange={setRating} />
+              <PathRating
+                myRating={myRating}
+                publicRating={path.avgRating}
+                isReadOnly={!auth.uid}
+                onChange={setRating}
+              />
             </span>
           </div>
           <span className="subscribers">120,600</span>
