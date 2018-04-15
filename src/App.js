@@ -1,19 +1,50 @@
 import React, { Component } from "react";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
-import About from "./components/About";
-import Admin from "./components/Admin";
-import Home from "./components/Home";
-import SearchPaths from "./components/Search/SearchPaths";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Dashboard from "./components/Dashboard";
-import Path from "./components/Path";
-import Login from "./components/Login";
 import { firebaseConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import "./App.css";
 import { slide as Menu } from "react-burger-menu";
 import { getSearchKeyIfUserChanged } from "./actions/algolia";
+import Loadable from "react-loadable";
+
+const Loading = () => <div>Loading...</div>;
+
+const Home = Loadable({
+  loader: () => import("./components/Home"),
+  loading: Loading
+});
+
+const About = Loadable({
+  loader: () => import("./components/About"),
+  loading: Loading
+});
+
+const Path = Loadable({
+  loader: () => import("./components/Path"),
+  loading: Loading
+});
+
+const SearchPaths = Loadable({
+  loader: () => import("./components/Search/SearchPaths"),
+  loading: Loading
+});
+
+const Login = Loadable({
+  loader: () => import("./components/Login"),
+  loading: Loading
+});
+
+const Dashboard = Loadable({
+  loader: () => import("./components/Dashboard"),
+  loading: Loading
+});
+
+const Admin = Loadable({
+  loader: () => import("./components/Admin"),
+  loading: Loading
+});
 
 class App extends Component {
   logout = () => {
