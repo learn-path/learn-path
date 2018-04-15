@@ -10,6 +10,7 @@ const PathHeader = ({
   togglePrivate,
   subscribed,
   toggleSubscribe
+  
 }) => {
   let subscribeButton = subscribed ? (
     <button
@@ -26,6 +27,7 @@ const PathHeader = ({
       Subscribe
     </button>
   );
+
   if (!path) return "";
   return (
     <div className="header">
@@ -37,6 +39,7 @@ const PathHeader = ({
           <div className="path-image" />
           <div className="path-header-boddy">
             <span className="path-title">{path.title}</span>  
+            <span className="path-title">{path.author}</span> 
             <span className="path-desc">{path.short_desc}</span>
           </div>
         <div>

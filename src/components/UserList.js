@@ -4,6 +4,9 @@ import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import UserListItem from "./UserListItem";
+import UserSearch from "./Search/UserSearch";
+
+
 
 const UserList = ({ users, toggleBlock }) => {
   const list = !isLoaded(users) ? (
@@ -15,6 +18,7 @@ const UserList = ({ users, toggleBlock }) => {
   );
   return (
     <div>
+      <UserSearch/>
       <ul className="path-item-list">
         {list}
       </ul>

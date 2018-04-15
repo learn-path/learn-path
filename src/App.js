@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import "./App.css";
 import { slide as Menu } from "react-burger-menu";
 import { getSearchKeyIfUserChanged } from "./actions/algolia";
+import UserResult from "./components/Search/UserResult";
 
 class App extends Component {
   logout = () => {
@@ -160,6 +161,8 @@ class App extends Component {
             <Route path="/learn/:slurg" component={Path} />
             <Route exact path="/paths/search" component={SearchPaths} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/users/search" component={UserResult} />
+           
             <ProtectedRoute exact path="/dashboard" component={Dashboard} />
             <ProtectedRoute
               exact

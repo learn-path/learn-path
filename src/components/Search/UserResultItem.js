@@ -13,16 +13,14 @@ const enhance = compose(
       firestore.update(
         { collection: "users", doc: user.id },
         { blocked: !user.blocked }
-      )
-   ,
+      ) ,
    toggleCertify: ({ firestore, user }) => () =>
       firestore.update(
         { collection: "users", doc: user.id },
         { certified: !user.certified }
-      )    
-     
+      )   
   })
-)
+);
 
 const UserListItem = ({ user, toggleBlock, toggleCertify }) => (
   <li
@@ -44,7 +42,7 @@ const UserListItem = ({ user, toggleBlock, toggleCertify }) => (
         <span>Blocked:</span>
         <ToggleButton value={user.blocked} onToggle={toggleBlock}  className="blocked-toggle" />
       </div>
-      <br/>
+       <br/>
       <div className="certified-box">
         <span>Certified:</span>
         <ToggleButton value={user.certified} onToggle={toggleCertify}  className="certified-toggle" />
