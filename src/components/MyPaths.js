@@ -1,32 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { isLoaded } from "react-redux-firebase";
 import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import PathCard from "./PathCard";
 
 const MyPaths = ({ mypaths }) => {
   const list = !isLoaded(mypaths) ? (
     "Loading"
   ) : mypaths && mypaths.length ? (
-    mypaths.map(path => (
-      <li
-        className="card path-card path-card-row"
-        style={{ display: "flex", justifyContent: "space-between" }}
-        key={path.id}
-      >
-        <Link to={`/learn/${path.id}`}>
-          <span className="card-image" />
-          <div className="card-body">
-            <h3>{path.title}</h3>
-            <p className="rate">
-              <span className="icon-star" />0.0
-            </p>
-            <p className="level">{path.level}</p>
-          </div>
-        </Link>
-      </li>
-    ))
+    mypaths.map(path => <PathCard key={`myPath-${path.id}`} path={path} />)
   ) : (
     <li className="no-path-found">No path added yet</li>
   );

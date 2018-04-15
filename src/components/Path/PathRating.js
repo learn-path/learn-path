@@ -8,16 +8,14 @@ export default class PathRating extends Component {
   state = { collapsed: true };
 
   hover = () => {
-    this.setState({ collapsed: false });
+    if (!this.props.isReadOnly) {
+      this.setState({ collapsed: false });
+    }
   };
 
   hoverEnd = () => {
     this.setState({ collapsed: true });
   };
-
-  componentWillReceiveProps() {
-    console.log("WILL");
-  }
 
   click = () => {
     if (this.state.collapsed) {
@@ -32,10 +30,11 @@ export default class PathRating extends Component {
 
   render() {
     const { myRating, publicRating, isReadOnly } = this.props;
+    let rate = Math.round(publicRating * 10) / 10 || "";
     let rating = this.state.collapsed ? (
       <div>
         <FontAwesomeIcon color="#F7C428" icon={faStar} />
-        <span>{publicRating}</span>
+        <span>{rate}</span>
       </div>
     ) : (
       <Rating

@@ -22,8 +22,7 @@ export default compose(
                   collection: "subscribed_paths",
                   doc: props.match.params.slurg
                 }
-              ],
-              storeAs: "subscribed"
+              ]
             },
             {
               collection: "users",
@@ -34,8 +33,7 @@ export default compose(
                   doc: props.match.params.slurg,
                   subcollections: [{ collection: "items" }]
                 }
-              ],
-              storeAs: "subscribed_items"
+              ]
             },
             `paths/${props.match.params.slurg}/ratings/${props.auth.uid}`
           ]
@@ -48,24 +46,28 @@ export default compose(
       {
         collection: "paths",
         doc: props.match.params.slurg,
-        subcollections: [{ collection: "items" }],
-        storeAs: "items"
+        subcollections: [{ collection: "items" }]
       },
       ...authedQueries
     ];
   }),
   connect(({ firestore, firebase }, props) => {
+    const authId = props.auth.uid;
+    const docId = props.match.params.slurg;
+    const rating = firestore.ordered[`paths_${docId}_ratings_${authId}`];
     return {
-      path: getVal(firestore, `data/paths/${props.match.params.slurg}`),
-      items: firestore.ordered.items,
-      subscribed: firestore.ordered.subscribed,
+      path: getVal(firestore, `data/paths/${docId}`),
+      items: firestore.ordered[`paths_${docId}_items`] || [],
+      subscribed:
+        firestore.ordered[`users_${authId}_subscribed_paths_${docId}`] || [],
       auth: firebase.auth,
       id: `${props.match.params.slurg}`,
-      subscribed_items: firestore.data.subscribed_items,
-      my_ratings:
-        firestore.ordered.paths_ratings && firestore.ordered.paths_ratings[0]
-          ? firestore.ordered.paths_ratings[0]
-          : false
+      subscribed_items: getVal(
+        firestore,
+        `data/users/${authId}/subscribed_paths/${docId}/items`,
+        {}
+      ),
+      my_ratings: rating && rating[0] ? rating : false
     };
   }),
   withHandlers({

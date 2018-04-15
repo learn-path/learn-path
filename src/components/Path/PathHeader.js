@@ -2,6 +2,7 @@ import React from "react";
 import IconProfile from "../../img/profile.svg";
 import ToggleButton from "react-toggle-button";
 import PathRating from "./PathRating";
+import Pluralize from "react-pluralize";
 
 const PathHeader = ({
   path,
@@ -49,7 +50,9 @@ const PathHeader = ({
         </div>
         <div className="path-info">
           <div className="ratings">
-            <span className="count">18 ratings</span>
+            <span className="count">
+              <Pluralize count={path.numRatings} singular="rating" />
+            </span>
             <span className="rate">
               <PathRating
                 myRating={myRating}

@@ -1,49 +1,32 @@
 import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { Link } from "react-router-dom";
+import { firestoreConnect, getVal } from "react-redux-firebase";
+import PathCard from "./PathCard";
 
 const enhance = compose(
   firestoreConnect(props => {
     return [
       {
         collection: "paths",
-        doc: props.pathToLoad.id,
-        storeAs: "loadedPath"
+        doc: props.pathToLoad.id
       }
     ];
   }),
-  connect(({ firebase: { auth }, firestore, props }) => {
-    if (!firestore.ordered.loadedPath) return {};
+  connect(({ firebase: { auth }, firestore }, props) => {
+    if (!props) return {};
     return {
       auth,
       firestore,
-      loadedPath: firestore.ordered.loadedPath[0]
+      id: props.pathToLoad.id,
+      loadedPath: getVal(firestore, `data/paths/${props.pathToLoad.id}`, {})
     };
   })
 );
 
-const SubscribedPathItem = ({ loadedPath, toggleBlock }) => {
+const SubscribedPathItem = ({ loadedPath, toggleBlock, id }) => {
   const path = loadedPath ? loadedPath : {};
-  return (
-    <li
-      className="card path-card path-card-row"
-      style={{ display: "flex", justifyContent: "space-between" }}
-      key={path.id}
-    >
-      <Link to={`/learn/${path.id}`}>
-        <span className="card-image" />
-        <div className="card-body">
-          <h3>{path.title}</h3>
-          <p className="rate">
-            <span className="icon-star" />0.0
-          </p>
-          <p className="level">{path.level}</p>
-        </div>
-      </Link>
-    </li>
-  );
+  return <PathCard id={id} path={path} />;
 };
 
 export default enhance(SubscribedPathItem);
