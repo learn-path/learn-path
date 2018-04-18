@@ -2,7 +2,7 @@ import React from "react";
 
 const PathCommentEdit = ({ comment, handleChange, handleSave }) => {
   return (
-    <div className="card path-item path-item-form">
+    <div className="path-comment-form">
       <div className="form-box">        
         <label>Name</label>
         <input
@@ -22,10 +22,10 @@ const PathCommentEdit = ({ comment, handleChange, handleSave }) => {
         />
       </div>
       <button
-        className="btn btn-blue btn-large btn-subscribe"
+        className="btn btn-blue"
         onClick={handleSave}
       >
-        SAVE
+        Save
       </button>
     </div>
   );

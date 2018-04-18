@@ -78,8 +78,8 @@ class Path extends Component {
       newItem: false
     });
   };
-
   handleCommentSave = () => {
+    let userName = this.props.auth.displayName;
     let data = [
       ["userName", "user_name"],
       ["content", "content"]
@@ -134,15 +134,13 @@ class Path extends Component {
     if (!path) {
       return "";
     }
-    let p = path ? path : { items: [] };
+    let p = path ? path : { items: [], comments: [] };
     let items = this.props.items ? this.props.items : [];
     let comments = this.props.comments ? this.props.comments : [];
     const hasPrivilege = auth && !auth.isEmpty && path.author === auth.uid;
     const subscribed_items = this.props.subscribed_items || {};
     const isSubscribed =
       this.props.subscribed && this.props.subscribed.length > 0;
-    const isCommentAuthor =
-      this.props.commentAuthor && this.props.commentAuthor.length > 0;
     if (p && p.blocked && !hasPrivilege)
       return (
         <h2 style={{ color: "red", textAlign: "center" }}>
@@ -196,15 +194,20 @@ class Path extends Component {
                 />
               ))}
             </ul>
+          </div>
+        </div>
+        <div className="path-comments">
+          <div className="container">
+            <span className="title">Comments</span>
             
-            <p>{this.props.auth.displayName}</p>
-            
-            <button
-              onClick={this.setEdit("newComment")}
-              className="btn btn-blue path-command"
-            >
-              Add new comment
-            </button>
+            <p>
+              <button
+                onClick={this.setEdit("newComment")}
+                className="btn btn-blue path-comment"
+              >
+                Add new comment
+              </button>
+            </p>
             {this.state.newComment ? (
               <PathCommentEdit
                 handleChange={this.handleChange}
@@ -219,7 +222,6 @@ class Path extends Component {
                   key={`p-comment-${index}`}
                   pathId={this.props.id}
                   comment={comment}
-                  isCommentAuthor={isCommentAuthor}
                 />
               ))}
             </ul>

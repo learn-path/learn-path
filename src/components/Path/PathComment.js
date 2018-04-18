@@ -46,7 +46,7 @@ class PathComment extends Component {
       
 
     render () {
-        const { isCommentAuthor, comment } = this.props;
+        const { comment } = this.props;
 
         if (this.state.edit) {
           return (
@@ -59,7 +59,7 @@ class PathComment extends Component {
         }
         return (
             <li>
-                <p>{comment.userName}</p>
+                <span className="user-name">{comment.user_name}</span>
                 <p>{comment.content}</p>
                 <div>
                   <button onClick={this.setEdit} className="btn comment-command">

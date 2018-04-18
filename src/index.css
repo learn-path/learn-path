@@ -570,6 +570,28 @@ li.no-path-found {
   -webkit-transform: rotate(45deg);
 }
 
+.path-comments {
+  background: white;
+  margin-top: 15px;
+  padding: 15px 0;
+}
+
+.path-comment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.path-comment-list li, .path-comment-form {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--light-blue);
+}
+
+.user-name {
+  color: var(--blue);
+  font-weight: 600;
+}
+
 /** Path Edit **/
 
 .form-box {
