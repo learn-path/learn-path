@@ -146,7 +146,15 @@ class Path extends Component {
         <h2 style={{ color: "red", textAlign: "center" }}>
           This path is blocked
         </h2>
-      );
+      );      
+    let countComments = comments.length;
+    let showCountComments = null;
+    if (countComments === 1) {
+      showCountComments = "There is " + countComments + " comment.";
+    } else {
+      showCountComments = "There are " + countComments + " comments.";
+    }
+
     return (
       <div className="path">
         {this.state.path ? (
@@ -198,8 +206,9 @@ class Path extends Component {
         </div>
         <div className="path-comments">
           <div className="container">
-            <span className="title">Comments</span>
-            
+            <span className="title">{showCountComments}</span>  
+            <span className="title">
+            </span>           
             <p>
               <button
                 onClick={this.setEdit("newComment")}
