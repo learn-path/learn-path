@@ -61,11 +61,6 @@ class PathComment extends Component {
             <li>
                 <span className="user-name">{comment.user_name}</span>
                 <p>{comment.content}</p>
-                <div>
-                  <button onClick={this.setEdit} className="btn comment-command">
-                    Edit
-                  </button>
-                </div>
             </li>
         );
     }
