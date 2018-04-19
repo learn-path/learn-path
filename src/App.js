@@ -8,6 +8,7 @@ import "./App.css";
 import { slide as Menu } from "react-burger-menu";
 import { getSearchKeyIfUserChanged } from "./actions/algolia";
 import Loadable from "react-loadable";
+import AddToHomeScreen from "./AddToHomeScreen";
 
 const Loading = () => <div>Loading...</div>;
 
@@ -199,6 +200,7 @@ class App extends Component {
               component={Admin}
             />
           </Switch>
+          <AddToHomeScreen />
         </main>
       </div>
     );
