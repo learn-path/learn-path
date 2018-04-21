@@ -48,6 +48,11 @@ export default compose(
         doc: props.match.params.slurg,
         subcollections: [{ collection: "items" }]
       },
+      {
+        collection: "paths",
+        doc: props.match.params.slurg,
+        subcollections: [{ collection: "comments" }]
+      },
       ...authedQueries
     ];
   }),
@@ -58,6 +63,7 @@ export default compose(
     return {
       path: getVal(firestore, `data/paths/${docId}`),
       items: firestore.ordered[`paths_${docId}_items`] || [],
+      comments: firestore.ordered[`paths_${docId}_comments`] || [],
       subscribed:
         firestore.ordered[`users_${authId}_subscribed_paths_${docId}`] || [],
       auth: firebase.auth,

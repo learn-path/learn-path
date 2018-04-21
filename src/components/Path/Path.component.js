@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import PathItem from "./PathItem";
+import PathComment from "./PathComment";
 import "normalize.css";
 import PathHeader from "./PathHeader";
 import PathEdit from "./PathEdit";
 import PathItemEdit from "./PathItemEdit";
+import PathCommentEdit from "./PathCommentEdit";
 import { isLoaded } from "react-redux-firebase";
 
 class Path extends Component {
@@ -76,6 +78,33 @@ class Path extends Component {
       newItem: false
     });
   };
+  handleCommentSave = () => {
+    let userName = this.props.auth.displayName;
+    let data = [
+      ["userName", "user_name"],
+      ["content", "content"]
+    ].reduce((data, current) => {
+      if (this.state[current[0]]) data[current[1]] = this.state[current[0]];
+      return data;
+    }, {});
+    if (Object.keys(data).length === 0) {
+      this.setState({
+        newComment: false
+      });
+      return;
+    }
+    this.props.firebase
+      .firestore()
+      .collection("paths")
+      .doc(this.props.id)
+      .collection("comments")
+      .add(data);
+    this.setState({
+      userName: undefined,
+      content: undefined,
+      newComment: false
+    });
+  };
 
   handleSubscribe = () => {
     if (this.props.subscribed && this.props.subscribed.length) {
@@ -105,8 +134,9 @@ class Path extends Component {
     if (!path) {
       return "";
     }
-    let p = path ? path : { items: [] };
+    let p = path ? path : { items: [], comments: [] };
     let items = this.props.items ? this.props.items : [];
+    let comments = this.props.comments ? this.props.comments : [];
     const hasPrivilege = auth && !auth.isEmpty && path.author === auth.uid;
     const subscribed_items = this.props.subscribed_items || {};
     const isSubscribed =
@@ -116,7 +146,15 @@ class Path extends Component {
         <h2 style={{ color: "red", textAlign: "center" }}>
           This path is blocked
         </h2>
-      );
+      );      
+    let countComments = comments.length;
+    let showCountComments = null;
+    if (countComments === 1) {
+      showCountComments = "There is " + countComments + " comment.";
+    } else {
+      showCountComments = "There are " + countComments + " comments.";
+    }
+
     return (
       <div className="path">
         {this.state.path ? (
@@ -161,6 +199,38 @@ class Path extends Component {
                   isSubscribed={isSubscribed}
                   toggleDone={this.props.toggleDone}
                   done={subscribed_items[item.id]}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="path-comments">
+          <div className="container">
+            <span className="title">{showCountComments}</span>  
+            <span className="title">
+            </span>           
+            <p>
+              <button
+                onClick={this.setEdit("newComment")}
+                className="btn btn-blue path-comment"
+              >
+                Add new comment
+              </button>
+            </p>
+            {this.state.newComment ? (
+              <PathCommentEdit
+                handleChange={this.handleChange}
+                handleSave={this.handleCommentSave}
+              />
+            ) : (
+              ""
+            )}
+            <ul className="path-comment-list">
+              {comments.map((comment, index) => (
+                <PathComment
+                  key={`p-comment-${index}`}
+                  pathId={this.props.id}
+                  comment={comment}
                 />
               ))}
             </ul>
