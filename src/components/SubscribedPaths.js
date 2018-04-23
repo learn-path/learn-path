@@ -7,7 +7,7 @@ import SubscribedPathsItem from "./SubscribedPathsItem";
 
 const SubscribedPaths = ({ subscribedpaths }) => {
   const list = !isLoaded(subscribedpaths) ? (
-    "Loading"
+    <div className="container"><span className="title text-center">Loading...</span></div>
   ) : subscribedpaths && subscribedpaths.length ? (
     subscribedpaths.map(path => (
       <SubscribedPathsItem key={path.id} pathToLoad={path} />

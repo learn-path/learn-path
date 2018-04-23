@@ -10,7 +10,7 @@ import UserSearch from "./Search/UserSearch";
 
 const UserList = ({ users, toggleBlock }) => {
   const list = !isLoaded(users) ? (
-    "Loading"
+    <div className="container"><span className="title text-center">Loading...</span></div>
   ) : users && users.length ? (
     users.map(user => <UserListItem key={user.id} user={user} />)
   ) : (

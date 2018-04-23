@@ -10,7 +10,7 @@ import { getSearchKeyIfUserChanged } from "./actions/algolia";
 import Loadable from "react-loadable";
 import AddToHomeScreen from "./AddToHomeScreen";
 
-const Loading = () => <div className="container"><span className="title text-center">Loading</span></div>;
+const Loading = () => <div className="container"><span className="title text-center">Loading...</span></div>;
 
 const Home = Loadable({
   loader: () => import("./components/Home"),

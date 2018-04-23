@@ -7,7 +7,7 @@ import PathCard from "./PathCard";
 
 const MyPaths = ({ mypaths }) => {
   const list = !isLoaded(mypaths) ? (
-    "Loading"
+    <div className="container"><span className="title text-center">Loading...</span></div>
   ) : mypaths && mypaths.length ? (
     mypaths.map(path => <PathCard key={`myPath-${path.id}`} path={path} />)
   ) : (

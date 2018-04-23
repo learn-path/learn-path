@@ -22,8 +22,8 @@ const ProtectedRoute = ({
       />
     );
   }
-  if (!auth.isLoaded || profile.isEmpty) return <span>Loading</span>;
-  if (profile.blocked) return <span>You've been blocked by an Admin</span>;
+  if (!auth.isLoaded || profile.isEmpty) return <div className="container"><span className="title text-center">Loading...</span></div>;
+  if (profile.blocked) return <div className="container"><span className="title text-center">You've been blocked by an Admin</span></div>;
   return (
     <Route
       {...rest}

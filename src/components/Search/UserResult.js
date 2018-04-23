@@ -43,7 +43,7 @@ const urlToSearchState = location => qs.parse(location.search.slice(1));
 
 const UserResult = ({ users, toggleBlock }) => {
   const list = !isLoaded(users) ? (
-    "Loading"
+    <div className="container"><span className="title text-center">Loading...</span></div>
   ) : users && users.length ? (
     users.map(user => <UserResultItem key={user.id} user={user} />)
   ) : (
