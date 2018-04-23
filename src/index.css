@@ -49,6 +49,10 @@ p {
   font-size: 1.25rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .container {
   width: 100%;
   padding: 0 15px;
@@ -375,6 +379,10 @@ a.logo {
   font-weight: 700;
   margin: 0;
   font-size: 0.85rem;
+}
+
+.svg-inline--fa {
+  margin-right: 5px;
 }
 
 .icon-star {
