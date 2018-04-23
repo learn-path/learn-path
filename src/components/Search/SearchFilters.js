@@ -10,7 +10,7 @@ const modalStyle = {
     right: 0,
     bottom: 0,
     zIndex: 9999,
-    backgroundColor: "#fff"
+    backgroundColor: "rgba(0, 0, 0, 0.8)"
   },
   content: {
     position: "absolute",
@@ -23,8 +23,7 @@ const modalStyle = {
     height: "100%",
     maxWidth: "248px",
     margin: "0 auto",
-    padding: 50,
-    fontSize: 18
+    padding: 25
   }
 };
 
@@ -54,7 +53,7 @@ class SearchFilters extends Component {
     const { isModalOpen } = this.state;
     return (
       <div>
-        <button onClick={this.openModal}>Filters</button>
+        <button className="btn btn-blue" onClick={this.openModal}>Filters</button>
         <div
           style={{
             ...modalStyle.overlay,
@@ -63,7 +62,7 @@ class SearchFilters extends Component {
         >
           <div style={modalStyle.content}>
             <div>
-              <Panel className="" header="Level">
+              <Panel header="Level">
                 <RefinementList
                   attribute="level"
                   attributeName="level"
@@ -73,7 +72,7 @@ class SearchFilters extends Component {
                 />
               </Panel>
             </div>
-            <button onClick={this.closeModal}>Close</button>
+            <button className="btn btn-blue" onClick={this.closeModal}>Close</button>
           </div>
         </div>
       </div>

@@ -102,8 +102,8 @@ class SearchPaths extends Component {
             <SearchBox className="ais-search-bar" />
             <div style={{ display: "flex" }}>
               <SearchFilters />
-              <CurrentRefinements />
             </div>
+              <CurrentRefinements />
           </div>
           <SearchResults />
           <div style={{ alignSelf: "center" }}>
