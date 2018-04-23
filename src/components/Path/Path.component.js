@@ -176,12 +176,17 @@ class Path extends Component {
         <div className="details">
           <div className="container">
             <span className="title">Start your journey</span>
-            <button
-              onClick={this.setEdit("newItem")}
-              className="btn btn-blue path-command"
-            >
-              Add new item
-            </button>
+            
+            {!hasPrivilege ? (
+              ""
+            ) : (
+              <button
+                onClick={this.setEdit("newItem")}
+                className="btn btn-blue path-command"
+              >
+                Add new item
+              </button>
+            )}
             {this.state.newItem ? (
               <PathItemEdit
                 handleChange={this.handleChange}
@@ -199,6 +204,7 @@ class Path extends Component {
                   isSubscribed={isSubscribed}
                   toggleDone={this.props.toggleDone}
                   done={subscribed_items[item.id]}
+                  hasPrivilege={hasPrivilege}
                 />
               ))}
             </ul>

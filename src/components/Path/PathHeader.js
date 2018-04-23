@@ -44,11 +44,15 @@ const PathHeader = ({
             <span className="path-title">{path.title}</span>
             <span className="path-desc">{path.short_desc}</span>
           </div>
-          <div>
-            <button className="btn" onClick={setEdit}>
-              Edit
-            </button>
-          </div>
+            {!hasPrivilege ? (
+              ""
+            ) : (
+              <div>
+                <button className="btn" onClick={setEdit}>
+                  Edit
+                </button>
+              </div>
+            )}
         </div>
         <div className="path-info">
           <div className="ratings">

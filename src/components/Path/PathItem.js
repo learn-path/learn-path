@@ -54,7 +54,7 @@ class PathItem extends Component {
   };
 
   render() {
-    const { isSubscribed, done, item } = this.props;
+    const { isSubscribed, done, item, hasPrivilege } = this.props;
     const checked = done && done.done ? "checked" : "";
     const checkbox = isSubscribed ? (
       <div
@@ -86,11 +86,16 @@ class PathItem extends Component {
         <a href={item.url} target="_blank" className="path-item-link">
           {item.title}
         </a>
-        <div>
-          <button onClick={this.setEdit} className="btn item-command">
-            Edit
-          </button>
-        </div>
+        
+        {!hasPrivilege ? (
+              ""
+            ) : (
+          <div>
+            <button onClick={this.setEdit} className="btn item-command">
+              Edit
+            </button>
+          </div>
+        )}
       </li>
     );
   }
