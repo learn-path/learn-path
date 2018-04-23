@@ -29,33 +29,31 @@ class Profile extends Component {
     let skipButton = this.props.full ? (
       ""
     ) : (
-      <button className="btn btn-blue btn-subscribe" onClick={this.handleSkip}>
-        SKIP
+      <button
+        className="btn"
+        style={{marginLeft: 10}}
+        onClick={this.handleSkip}>
+        Skip
       </button>
     );
     return (
       <div>
-        <h3>{this.props.message}</h3>
-        <textarea
-          style={{ fontSize: 12 }}
-          name="short_desc"
-          defaultValue={this.props.profile.short_desc}
-          cols={50}
-          rows={5}
-          onChange={this.handleChange}
-          placeholder="I'm John, I've been a Full Stack Software developer for 10 years and I love Star Wars and cats"
-        />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between"
-          }}
-        >
-          <button className="btn btn-blue" onClick={this.handleSave}>
-            Save profile
-          </button>
-          {skipButton}
+        <h3 className="title">{this.props.message}</h3>
+        <div  className="form-box">
+          <textarea
+            className="form-control"
+            name="short_desc"
+            defaultValue={this.props.profile.short_desc}
+            cols={50}
+            rows={5}
+            onChange={this.handleChange}
+            placeholder="I'm John, I've been a Full Stack Software developer for 10 years and I love Star Wars and cats"
+          />
         </div>
+        <button className="btn btn-blue" onClick={this.handleSave}>
+          Save profile
+        </button>
+        {skipButton}
       </div>
     );
   }

@@ -8,7 +8,7 @@ const PathSlider = ({ newPaths, title }) => {
       <h2 className="title">{title}</h2>
       <div className="path-slider-wrapper">
         {p.map(item => (
-          <div className="card path-card path-card-col" key={`p-i-${item.id}`}>
+          <div className="card card-col card-path" key={`p-i-${item.id}`}>
             <Link to={`/learn/${item.id}`}>
               <span className="card-image"></span>
               <div className="card-body">

@@ -11,10 +11,12 @@ import { connect } from "react-redux";
 const Dashboard = ({ auth, profile }) => {
   if (!profile.done)
     return (
-      <Profile
-        message="Hi, let other users know you better"
-        profile={profile}
-      />
+      <div className="container">
+        <Profile
+          message="Hi, let other users know you better"
+          profile={profile}
+        />      
+      </div>
     );
   return (
     <div className="container">

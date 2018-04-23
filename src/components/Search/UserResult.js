@@ -50,7 +50,8 @@ const UserResult = ({ users, toggleBlock }) => {
     <li className="no-path-found">No user added yet</li>
   );
   return (
-    <div>
+    <div className="container">
+      <h2 className="title">Search results</h2>
       <UserSearch/>
       <ul className="path-item-list">
         {list}

@@ -40,11 +40,11 @@ class SearchResultItem extends Component {
         id={path.objectID}
         path={path}
         extra={
-          <div style={{ padding: 20 }}>
+          <div>
             {!hasPrivilege ? (
               ""
             ) : (
-              <div>
+              <div style={{ padding: 20 }}>
                 <span>Blocked</span>
                 <ToggleButton
                   value={this.state.value}

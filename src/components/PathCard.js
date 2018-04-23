@@ -6,8 +6,7 @@ const PathCard = ({ path, id, extra }) => {
   id = id || path.id;
   return (
     <li
-      className="card path-card path-card-row"
-      style={{ display: "flex", justifyContent: "space-between" }}
+      className="card card-row card-path"
       key={`path-card-${id}`}
     >
       <Link to={`/learn/${id}`}>

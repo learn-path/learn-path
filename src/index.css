@@ -189,6 +189,79 @@ a.logo {
   margin-bottom: 10px;
 }
 
+.card a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.card a:hover {
+  opacity: 0.7;
+}
+
+.card-col {
+  margin-right: 15px;
+}
+
+.card-row {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.card-row a {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.card-image {
+  width: 100px;
+  height: 100px;
+  display: block;
+  background-color: var(--gray);
+}
+
+.card-col .card-image {
+  width: 140px;
+  height: 140px;
+}
+
+.card-body {
+  flex: 1;
+  padding: 5px 10px;
+}
+
+.card-body h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.card-body h3 a {
+  color: var(--dark-gray);
+  text-decoration: none;
+}
+
+.card-user .card-body h3 {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.card .toggles {
+  display: flex;
+  border-top: 1px solid var(--light-gray);
+  padding-top: 5px;
+  margin-top: 5px;
+
+}
+.blocked-box {
+  margin-right: 20px;
+}
+
+.blocked-box span, .certified-box span {
+  font-size: 0.85rem;
+}
+
 /** Home **/
 .hero {
   background-image: url(img/banner.jpg);
@@ -296,61 +369,6 @@ a.logo {
   display: flex;
   margin-bottom: 15px;
   overflow-x: auto;
-}
-
-.path-card {
-  background-color: white;
-  box-shadow: 0px 3px 10px rgba(41, 63, 77, 0.12);
-}
-
-.path-card a {
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s;
-}
-
-.path-card a:hover {
-  opacity: 0.7;
-}
-
-.path-card-col {
-  margin-right: 15px;
-}
-
-.path-card-row {
-  margin-bottom: 15px;
-}
-.path-card-row a {
-  display: flex;
-  flex-direction: row;
-}
-
-.card-image {
-  width: 100px;
-  height: 100px;
-  display: block;
-  background-color: var(--gray);
-}
-
-.path-card-col .card-image {
-  width: 140px;
-  height: 140px;
-}
-
-.card-body {
-  flex: 1;
-  padding: 5px 10px;
-}
-
-.card-body h3 {
-  font-size: 1.25rem;
-  font-weight: 400;
-  margin: 0;
-}
-
-.card-body h3 a {
-  color: var(--dark-gray);
-  text-decoration: none;
 }
 
 .rate {
@@ -627,7 +645,7 @@ label {
 
 /** Admin **/
 
-.blocked-box span,
+/*.blocked-box span,
 .blocked-toggle {
   float: left;
 }
@@ -641,7 +659,7 @@ label {
 .certified-box span {
   margin-right: 10px;
   
-}
+}*/
 /** Buttons **/
 .btn {
   padding: 8px 16px;

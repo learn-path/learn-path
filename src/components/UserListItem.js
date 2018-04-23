@@ -26,8 +26,7 @@ const enhance = compose(
 
 const UserListItem = ({ user, toggleBlock, toggleCertify }) => (
   <li
-    className="card path-card path-card-row"
-    style={{ display: "flex", justifyContent: "space-between" }}
+    className="card card-row card-user"
     key={user.id}
   >
     <div>
@@ -39,15 +38,15 @@ const UserListItem = ({ user, toggleBlock, toggleCertify }) => (
     </div>
     <div className="card-body">
       <h3 style={{ marginBottom: "5px"}}>{user.displayName}</h3>
-      <p>{user.short_desc}</p>
-      <div className="blocked-box">
-        <span>Blocked:</span>
-        <ToggleButton value={user.blocked} onToggle={toggleBlock}  className="blocked-toggle" />
-      </div>
-      <br/>
-      <div className="certified-box">
-        <span>Certified:</span>
-        <ToggleButton value={user.certified} onToggle={toggleCertify}  className="certified-toggle" />
+      <div className="toggles">
+        <div className="blocked-box">
+          <span>Blocked:</span>
+          <ToggleButton value={user.blocked} onToggle={toggleBlock}  className="blocked-toggle" />
+        </div>
+        <div className="certified-box">
+          <span>Certified:</span>
+          <ToggleButton value={user.certified} onToggle={toggleCertify}  className="certified-toggle" />
+        </div>
       </div>
     </div>
   </li>
