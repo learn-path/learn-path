@@ -616,6 +616,18 @@ li.no-path-found {
 .user-name {
   color: var(--blue);
   font-weight: 600;
+  display: block;
+}
+.path-comment-list li p {
+  margin-bottom: 5px;
+}
+
+.comment-date {
+  font-size: 0.8rem;
+}
+
+.the-date {
+  color: var(--blue);
 }
 
 /** Path Edit **/

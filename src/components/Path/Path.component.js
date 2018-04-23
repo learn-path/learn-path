@@ -87,6 +87,7 @@ class Path extends Component {
       if (this.state[current[0]]) data[current[1]] = this.state[current[0]];
       return data;
     }, {});
+    data.created = this.props.firebase.firestore.FieldValue.serverTimestamp();
     if (Object.keys(data).length === 0) {
       this.setState({
         newComment: false

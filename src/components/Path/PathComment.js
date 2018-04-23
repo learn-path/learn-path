@@ -24,6 +24,7 @@ class PathComment extends Component {
           if (this.state[current[0]]) data[current[1]] = this.state[current[0]];
           return data;
         }, {});
+        data.created = this.props.firebase.firestore.FieldValue.serverTimestamp();
         if (Object.keys(data).length === 0) {
           this.setState({
             edit: false
@@ -47,7 +48,7 @@ class PathComment extends Component {
 
     render () {
         const { comment } = this.props;
-
+        const the_date = comment.created;
         if (this.state.edit) {
           return (
             <PathCommentEdit
@@ -61,6 +62,7 @@ class PathComment extends Component {
             <li>
                 <span className="user-name">{comment.user_name}</span>
                 <p>{comment.content}</p>
+                <span className="comment-date">Posted on <span className="the-date">{the_date.toLocaleString()}</span></span>
             </li>
         );
     }
