@@ -14,7 +14,8 @@ const PathHeader = ({
   toggleSubscribe,
   hasPrivilege,
   setRating,
-  my_ratings
+  my_ratings,
+  subscribed
 }) => {
   let subscribeButton = isSubscribed ? (
     <button
@@ -31,6 +32,7 @@ const PathHeader = ({
       Subscribe
     </button>
   );
+
   if (!path) return "";
   const myRating = my_ratings ? my_ratings.rating : false;
   return (

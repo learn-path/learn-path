@@ -47,6 +47,11 @@ const Admin = Loadable({
   loading: Loading
 });
 
+const UserResult = Loadable({
+  loader: () => import("./components/Search/UserResult"),
+  loading: Loading
+});
+
 class App extends Component {
   logout = () => {
     this.props.firebase.auth().signOut();
@@ -192,6 +197,8 @@ class App extends Component {
             <Route path="/learn/:slurg" component={Path} />
             <Route exact path="/paths/search" component={SearchPaths} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/users/search" component={UserResult} />
+
             <ProtectedRoute exact path="/dashboard" component={Dashboard} />
             <ProtectedRoute
               exact

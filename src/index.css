@@ -634,7 +634,14 @@ label {
 .blocked-box span {
   margin-right: 10px;
 }
-
+.certified-box span,
+.certified-toggle {
+  float: left;
+}
+.certified-box span {
+  margin-right: 10px;
+  
+}
 /** Buttons **/
 .btn {
   padding: 8px 16px;

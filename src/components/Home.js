@@ -2,6 +2,9 @@ import React from "react";
 import NewPaths from "./PathSlider/NewPaths";
 import SearchBar from "./Search/SearchBar";
 
+
+
+
 export default () => (
   <div>
     <div className="hero">
@@ -16,5 +19,8 @@ export default () => (
       <SearchBar />
       <NewPaths title="New Paths" />
     </div>
+    <div>
+      
+      </div>
   </div>
 );
