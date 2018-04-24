@@ -1,8 +1,8 @@
 import React from "react";
-import IconProfile from "../../img/profile.svg";
 import ToggleButton from "react-toggle-button";
 import PathRating from "./PathRating";
 import Pluralize from "react-pluralize";
+import PathAuthor from "./PathAuthor";
 
 const PathHeader = ({
   path,
@@ -67,18 +67,7 @@ const PathHeader = ({
           <span className="subscribers">120,600</span>
           <span className="level">{path.level}</span>
         </div>
-        <div className="user-profile">
-          <span className="user-profile-image">
-            <img src={IconProfile} alt="Profile" />
-          </span>
-          <div className="user-profile-body">
-            <h3>Jonh Doe</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Vestibulum ultricies...
-            </p>
-          </div>
-        </div>
+        <PathAuthor id={path.author} />
         <div style={{ display: "flex", marginBottom: 10 }}>
           {!hasPrivilege ? (
             ""
