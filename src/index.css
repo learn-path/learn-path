@@ -256,13 +256,13 @@ a.logo {
   border-top: 1px solid var(--light-gray);
   padding-top: 5px;
   margin-top: 5px;
-
 }
 .blocked-box {
   margin-right: 20px;
 }
 
-.blocked-box span, .certified-box span {
+.blocked-box span,
+.certified-box span {
   font-size: 0.85rem;
 }
 
@@ -607,7 +607,8 @@ li.no-path-found {
   padding: 0;
 }
 
-.path-comment-list li, .path-comment-form {
+.path-comment-list li,
+.path-comment-form {
   margin-bottom: 15px;
   padding-top: 15px;
   border-top: 1px solid var(--light-blue);
@@ -722,7 +723,9 @@ label {
   padding-left: 5px;
 }
 
-.ais-CurrentRefinements-label, .ais-CurrentRefinements-categoryLabel, .ais-CurrentRefinements-delete {  
+.ais-CurrentRefinements-label,
+.ais-CurrentRefinements-categoryLabel,
+.ais-CurrentRefinements-delete {
   color: var(--dark-gray);
 }
 
@@ -956,4 +959,13 @@ label {
 
 .iOSIcon svg path {
   fill: red;
+}
+
+.social-links {
+  display: flex;
+}
+
+.social-links > div {
+  margin: 0px 5px 0px 0px;
+  outline: none;
 }

@@ -7,6 +7,20 @@ import PathEdit from "./PathEdit";
 import PathItemEdit from "./PathItemEdit";
 import PathCommentEdit from "./PathCommentEdit";
 import { isLoaded } from "react-redux-firebase";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  GooglePlusShareButton,
+  GooglePlusIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  WhatsappShareButton,
+  WhatsappIcon
+} from "react-share";
 
 class Path extends Component {
   state = {};
@@ -208,6 +222,26 @@ class Path extends Component {
         </div>
         <div className="path-comments">
           <div className="container">
+            <div className="social-links">
+              <FacebookShareButton url={window.location.href}>
+                <FacebookIcon round size={32} />
+              </FacebookShareButton>
+              <GooglePlusShareButton url={window.location.href}>
+                <GooglePlusIcon round size={32} />
+              </GooglePlusShareButton>
+              <LinkedinShareButton url={window.location.href}>
+                <LinkedinIcon round size={32} />
+              </LinkedinShareButton>
+              <TwitterShareButton url={window.location.href}>
+                <TwitterIcon round size={32} />
+              </TwitterShareButton>
+              <TelegramShareButton url={window.location.href}>
+                <TelegramIcon round size={32} />
+              </TelegramShareButton>
+              <WhatsappShareButton url={window.location.href}>
+                <WhatsappIcon round size={32} />
+              </WhatsappShareButton>
+            </div>
             <span className="title">{showCountComments}</span>
             <span className="title" />
             <p>
