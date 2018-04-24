@@ -60,6 +60,16 @@ p {
   position: relative;
 }
 
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 0 -15px;
+}
+.col-4, .col-6, .col-8 {
+  margin: 0 15px;
+  flex-grow: 1;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -81,6 +91,18 @@ p {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+  }
+  .row {
+    flex-direction: row;
+  }
+  .col-4 {
+    width: 33.3333333333%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-8 {
+    width: 66.6666666666%;
   }
 }
 
@@ -236,7 +258,7 @@ a.logo {
 }
 
 .card-body h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 400;
   margin: 0;
 }
@@ -458,6 +480,14 @@ li.no-path-found {
   border-bottom: 1px solid #dae1e5;
   padding-bottom: 15px;
   margin-bottom: 15px;
+}
+
+@media (min-width: 1200px) {
+  .path-info {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
 }
 
 .path-info div,
