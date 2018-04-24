@@ -26,6 +26,7 @@ class Path extends Component {
     let data = [
       ["pathTitle", "title"],
       ["pathDesc", "short_desc"],
+      ["pathCategory", "path_category"],
       ["pathLevel", "level"]
     ].reduce((data, current) => {
       if (this.state[current[0]]) data[current[1]] = this.state[current[0]];
@@ -80,13 +81,13 @@ class Path extends Component {
   };
   handleCommentSave = () => {
     let userName = this.props.auth.displayName;
-    let data = [
-      ["userName", "user_name"],
-      ["content", "content"]
-    ].reduce((data, current) => {
-      if (this.state[current[0]]) data[current[1]] = this.state[current[0]];
-      return data;
-    }, {});
+    let data = [["userName", "user_name"], ["content", "content"]].reduce(
+      (data, current) => {
+        if (this.state[current[0]]) data[current[1]] = this.state[current[0]];
+        return data;
+      },
+      {}
+    );
     data.created = this.props.firebase.firestore.FieldValue.serverTimestamp();
     if (Object.keys(data).length === 0) {
       this.setState({
@@ -147,7 +148,7 @@ class Path extends Component {
         <h2 style={{ color: "red", textAlign: "center" }}>
           This path is blocked
         </h2>
-      );      
+      );
     let countComments = comments.length;
     let showCountComments = null;
     if (countComments === 1) {
@@ -207,9 +208,8 @@ class Path extends Component {
         </div>
         <div className="path-comments">
           <div className="container">
-            <span className="title">{showCountComments}</span>  
-            <span className="title">
-            </span>           
+            <span className="title">{showCountComments}</span>
+            <span className="title" />
             <p>
               <button
                 onClick={this.setEdit("newComment")}

@@ -38,10 +38,20 @@ const PathEdit = ({ path, handleSave, handleChange }) => (
           <option value="Advanced">Advanced</option>
         </select>
       </div>
-      <button
-        className="btn btn-blue"
-        onClick={handleSave}
-      >
+      <div className="form-box">
+        <label>Category</label>
+        <select
+          className="form-control"
+          name="pathCategory"
+          defaultValue={path.category}
+          onChange={handleChange}
+        >
+          <option value="Programming">Programming</option>
+          <option value="Databases">Databases</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <button className="btn btn-blue" onClick={handleSave}>
         SAVE
       </button>
     </div>

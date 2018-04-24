@@ -53,7 +53,9 @@ class SearchFilters extends Component {
     const { isModalOpen } = this.state;
     return (
       <div>
-        <button className="btn btn-blue" onClick={this.openModal}>Filters</button>
+        <button className="btn btn-blue" onClick={this.openModal}>
+          Filters
+        </button>
         <div
           style={{
             ...modalStyle.overlay,
@@ -71,8 +73,19 @@ class SearchFilters extends Component {
                   }
                 />
               </Panel>
+              <Panel header="Category">
+                <RefinementList
+                  attribute="path_category"
+                  attributeName="path_category"
+                  transformItems={items =>
+                    orderBy(items, ["label", "count"], ["asc", "desc"])
+                  }
+                />
+              </Panel>
             </div>
-            <button className="btn btn-blue" onClick={this.closeModal}>Close</button>
+            <button className="btn btn-blue" onClick={this.closeModal}>
+              Close
+            </button>
           </div>
         </div>
       </div>
