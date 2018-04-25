@@ -106,7 +106,7 @@ class SearchPaths extends Component {
               <CurrentRefinements />
           </div>
           <SearchResults />
-          <div style={{ alignSelf: "center" }}>
+          <div style={{ alignSelf: "center", margin: "30px 0" }}>
             <Pagination showLast={false} showFirst={false} />
           </div>
         </div>
