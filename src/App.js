@@ -10,7 +10,11 @@ import { getSearchKeyIfUserChanged } from "./actions/algolia";
 import Loadable from "react-loadable";
 import AddToHomeScreen from "./AddToHomeScreen";
 
-const Loading = () => <div className="container"><span className="title text-center">Loading...</span></div>;
+const Loading = () => (
+  <div className="container">
+    <span className="title text-center">Loading...</span>
+  </div>
+);
 
 const Home = Loadable({
   loader: () => import("./components/Home"),
@@ -44,11 +48,6 @@ const Dashboard = Loadable({
 
 const Admin = Loadable({
   loader: () => import("./components/Admin"),
-  loading: Loading
-});
-
-const UserResult = Loadable({
-  loader: () => import("./components/Search/UserResult"),
   loading: Loading
 });
 
@@ -197,7 +196,6 @@ class App extends Component {
             <Route path="/learn/:slurg" component={Path} />
             <Route exact path="/paths/search" component={SearchPaths} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/users/search" component={UserResult} />
 
             <ProtectedRoute exact path="/dashboard" component={Dashboard} />
             <ProtectedRoute

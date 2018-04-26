@@ -8,7 +8,11 @@ export default class SearchBar extends Component {
   };
 
   handleSearch = () => {
-    this.setState({ keyword: "react" });
+    if (this.props.handleSearch) {
+      this.props.handleSearch(this.input.value);
+    } else {
+      this.setState({ keyword: "react" });
+    }
   };
 
   handleKeyDown = event => {
