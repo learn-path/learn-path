@@ -94,7 +94,6 @@ class Path extends Component {
     });
   };
   handleCommentSave = () => {
-    let userName = this.props.auth.displayName;
     let data = [["userName", "user_name"], ["content", "content"]].reduce(
       (data, current) => {
         if (this.state[current[0]]) data[current[1]] = this.state[current[0]];
@@ -192,17 +191,17 @@ class Path extends Component {
         <div className="details">
           <div className="container">
             <span className="title">Start your journey</span>
-            
+
             {!hasPrivilege ? (
-                ""
-              ) : (
-                <button
-                  onClick={this.setEdit("newItem")}
-                  className="btn btn-blue path-command"
-                >
-                  Add new item
-                </button>
-              )}
+              ""
+            ) : (
+              <button
+                onClick={this.setEdit("newItem")}
+                className="btn btn-blue path-command"
+              >
+                Add new item
+              </button>
+            )}
             {this.state.newItem ? (
               <PathItemEdit
                 handleChange={this.handleChange}

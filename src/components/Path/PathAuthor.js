@@ -2,7 +2,6 @@ import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect, getVal } from "react-redux-firebase";
-import IconProfile from "../../img/profile.svg";
 
 const enhance = compose(
   firestoreConnect(props => {
