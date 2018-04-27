@@ -3,7 +3,7 @@ import { compose } from "redux";
 import { withFirebase } from "react-redux-firebase";
 
 class Profile extends Component {
-  state = {};
+  state = { short_desc: this.props.profile.short_desc };
 
   handleChange = event => {
     const target = event.target;
@@ -31,19 +31,20 @@ class Profile extends Component {
     ) : (
       <button
         className="btn"
-        style={{marginLeft: 10}}
-        onClick={this.handleSkip}>
+        style={{ marginLeft: 10 }}
+        onClick={this.handleSkip}
+      >
         Skip
       </button>
     );
     return (
       <div>
         <h3 className="title">{this.props.message}</h3>
-        <div  className="form-box">
+        <div className="form-box">
           <textarea
             className="form-control"
             name="short_desc"
-            defaultValue={this.props.profile.short_desc}
+            value={this.state.short_desc}
             cols={50}
             rows={5}
             onChange={this.handleChange}
