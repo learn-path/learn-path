@@ -39,6 +39,7 @@ deploy:
   - provider: firebase
     token:
       secure: ViZ18GjK6PJVtBbs5gh6xo1xyqlgw/OrugnGgHwk4Yfmm0Ji6pyijMSVphvhW/m9bZEDcxJt1iSuXWvqornK3OLClPdwPHHj6Bk+a7+74FPhy5zBQeV9L6rBYj1A+6ubc1tPi+Y7sekWINBzY0pT5o+DUJdvgU6p6NTnXkWlNfg8Iq7LOzAeaUhO/S37ODK2tmqAvdPkA3UUCgD1suHwCoc0fv0ar92N87nSh8eAyfld8DRvzdzDNCd/Yoo9xqH0RyLNSyxElF6pnwJq5pyb9W9wVuKzAhtDk2u+lYrdtiNJ4KcpfuHwh8sRwfOYPxB1jotWYU8pvon9Q4357kwfry+JlFwlLtb4xaVaoaKx/A0oYIz29Lll8u9r08faAIDHJOpNUozXLKon474SVkxFSIaby+d1zSKL4BfgP7LbH2fNKRY5qSkuQpoG2RjXbMQJnWtBS/c5kU1nLYDT5JUl3QKiLVtU+cbxwxrmOT+he8paabYn0XxAR1kR7BZWC1vMiwUdS1YgARuHuOGGtHQPXSrXz8A9ED65/lCvU+9rd/PEeNN/VTYS9N2uhCEDc+BGgn7BZ1/yUSOfdQUsieBm/dsr4Mw3xu4dbT5DJPg+oFZy0if+uNfD7y1xUfTVAU1SXQNEDanRAaksI5ec5tH0+wQM15JhfJ/fALmNm+vyB5M=
+    project: "learnpath-35e60"
     skip_cleanup: true
     on:
       branch: master
