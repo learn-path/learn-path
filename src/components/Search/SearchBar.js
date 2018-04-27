@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import queryString from "query-string";
+import qs from "qs";
 
 export default class SearchBar extends Component {
   state = {
@@ -8,7 +8,11 @@ export default class SearchBar extends Component {
   };
 
   handleSearch = () => {
-    this.setState({ keyword: "react" });
+    if (this.props.handleSearch) {
+      this.props.handleSearch(this.input.value);
+    } else {
+      this.setState({ keyword: "react" });
+    }
   };
 
   handleKeyDown = event => {
@@ -29,7 +33,7 @@ export default class SearchBar extends Component {
         <Redirect
           to={{
             pathname: "/paths/search",
-            search: queryString.stringify({ q: this.input.value })
+            search: qs.stringify({ query: this.input.value })
           }}
           push={true}
         />

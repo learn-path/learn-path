@@ -46,11 +46,28 @@ class PathItem extends Component {
     });
   };
 
+  handleToggleDone = () => {
+    this.props.toggleDone(
+      this.props.item.id,
+      !(this.props.done && this.props.done.done)
+    );
+  };
+
   render() {
+    const { isSubscribed, done, item, hasPrivilege } = this.props;
+    const checked = done && done.done ? "checked" : "";
+    const checkbox = isSubscribed ? (
+      <div
+        onClick={this.handleToggleDone}
+        className={`path-item-status ${checked}`}
+      />
+    ) : (
+      ""
+    );
     if (this.state.edit) {
       return (
         <PathItemEdit
-          item={this.props.item}
+          item={item}
           handleChange={this.handleChange}
           handleSave={this.handleSave}
         />
@@ -59,22 +76,26 @@ class PathItem extends Component {
     return (
       <li
         className="card path-item"
-        style={{ display: "flex", justifyContent: "space-between" }}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }}
       >
-        <a
-          href={this.props.item.url}
-          target="_blank"
-          className="path-item-link"
-        >
-          {this.props.item.title}
+        {checkbox}
+        <a href={item.url} target="_blank" className="path-item-link">
+          {item.title}
         </a>
-        <span
-          style={{ paddingRight: 10 }}
-          onClick={this.setEdit}
-          className="item-command"
-        >
-          Edit
-        </span>
+        
+        {!hasPrivilege ? (
+                ""
+              ) : (
+          <div>
+            <button onClick={this.setEdit} className="btn item-command">
+              Edit
+            </button>
+          </div>
+        )}
       </li>
     );
   }

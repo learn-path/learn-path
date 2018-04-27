@@ -12,13 +12,14 @@ export default compose(
         collection: "paths",
         where: [["blocked", "==", false], ["private", "==", false]],
         limit: 10,
-        orderBy: ["created", "desc"]
+        orderBy: ["created", "desc"],
+        storeAs: "newPaths"
       }
     ];
   }),
   connect(({ firestore }, props) => {
     return {
-      newPaths: firestore.ordered.paths
+      newPaths: firestore.ordered.newPaths
     };
   })
 )(PathSlider);

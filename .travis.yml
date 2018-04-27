@@ -1,15 +1,51 @@
 language: node_js
 node_js:
 - 8
+notifications:
+  email: false
 cache:
   directories:
   - node_modules
+  - functions/node_modules
+before_script:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      echo "inserting production environment file";
+      echo "export const config = {
+        production:true,
+        env:'prod',
+        firebase:{
+          apiKey:'AIzaSyBN2Pj8ficQ1CSJ0FTOBWVTbbPEH-luJCQ',
+          authDomain:'learnpath-35e60.firebaseapp.com',
+          databaseURL:'https://learnpath-35e60.firebaseio.com',
+          projectId:'learnpath-35e60',
+          storageBucket:'learnpath-35e60.appspot.com',
+          messagingSenderId:'153253405177'
+        },
+        algolia:{
+          appId:'SQVQQP6ESC',
+          guest_key:'ZmRkNzUwMWExZmY2YTg1NGMwZWU1ZmMyNzVlNWQ1NTE4NmVlMzc1OTFmNTFmZjg3MzQzNTY3MmVkMzMxZGFhOWZpbHRlcnM9cHJpdmF0ZSUzQWZhbHNlJnVzZXJUb2tlbj1ndWVzdA=='
+        }
+      };" > src/config/config.js;
+    fi
 script:
 - npm test -- --coverage
 - npm run build
 after_script:
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+install:
+- npm install
+- (cd functions && ../node_modules/.bin/npm install)
 deploy:
-  provider: firebase
-  token:
-    secure: ViZ18GjK6PJVtBbs5gh6xo1xyqlgw/OrugnGgHwk4Yfmm0Ji6pyijMSVphvhW/m9bZEDcxJt1iSuXWvqornK3OLClPdwPHHj6Bk+a7+74FPhy5zBQeV9L6rBYj1A+6ubc1tPi+Y7sekWINBzY0pT5o+DUJdvgU6p6NTnXkWlNfg8Iq7LOzAeaUhO/S37ODK2tmqAvdPkA3UUCgD1suHwCoc0fv0ar92N87nSh8eAyfld8DRvzdzDNCd/Yoo9xqH0RyLNSyxElF6pnwJq5pyb9W9wVuKzAhtDk2u+lYrdtiNJ4KcpfuHwh8sRwfOYPxB1jotWYU8pvon9Q4357kwfry+JlFwlLtb4xaVaoaKx/A0oYIz29Lll8u9r08faAIDHJOpNUozXLKon474SVkxFSIaby+d1zSKL4BfgP7LbH2fNKRY5qSkuQpoG2RjXbMQJnWtBS/c5kU1nLYDT5JUl3QKiLVtU+cbxwxrmOT+he8paabYn0XxAR1kR7BZWC1vMiwUdS1YgARuHuOGGtHQPXSrXz8A9ED65/lCvU+9rd/PEeNN/VTYS9N2uhCEDc+BGgn7BZ1/yUSOfdQUsieBm/dsr4Mw3xu4dbT5DJPg+oFZy0if+uNfD7y1xUfTVAU1SXQNEDanRAaksI5ec5tH0+wQM15JhfJ/fALmNm+vyB5M=
+  - provider: firebase
+    token:
+      secure: ViZ18GjK6PJVtBbs5gh6xo1xyqlgw/OrugnGgHwk4Yfmm0Ji6pyijMSVphvhW/m9bZEDcxJt1iSuXWvqornK3OLClPdwPHHj6Bk+a7+74FPhy5zBQeV9L6rBYj1A+6ubc1tPi+Y7sekWINBzY0pT5o+DUJdvgU6p6NTnXkWlNfg8Iq7LOzAeaUhO/S37ODK2tmqAvdPkA3UUCgD1suHwCoc0fv0ar92N87nSh8eAyfld8DRvzdzDNCd/Yoo9xqH0RyLNSyxElF6pnwJq5pyb9W9wVuKzAhtDk2u+lYrdtiNJ4KcpfuHwh8sRwfOYPxB1jotWYU8pvon9Q4357kwfry+JlFwlLtb4xaVaoaKx/A0oYIz29Lll8u9r08faAIDHJOpNUozXLKon474SVkxFSIaby+d1zSKL4BfgP7LbH2fNKRY5qSkuQpoG2RjXbMQJnWtBS/c5kU1nLYDT5JUl3QKiLVtU+cbxwxrmOT+he8paabYn0XxAR1kR7BZWC1vMiwUdS1YgARuHuOGGtHQPXSrXz8A9ED65/lCvU+9rd/PEeNN/VTYS9N2uhCEDc+BGgn7BZ1/yUSOfdQUsieBm/dsr4Mw3xu4dbT5DJPg+oFZy0if+uNfD7y1xUfTVAU1SXQNEDanRAaksI5ec5tH0+wQM15JhfJ/fALmNm+vyB5M=
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: firebase
+    token:
+      secure: ViZ18GjK6PJVtBbs5gh6xo1xyqlgw/OrugnGgHwk4Yfmm0Ji6pyijMSVphvhW/m9bZEDcxJt1iSuXWvqornK3OLClPdwPHHj6Bk+a7+74FPhy5zBQeV9L6rBYj1A+6ubc1tPi+Y7sekWINBzY0pT5o+DUJdvgU6p6NTnXkWlNfg8Iq7LOzAeaUhO/S37ODK2tmqAvdPkA3UUCgD1suHwCoc0fv0ar92N87nSh8eAyfld8DRvzdzDNCd/Yoo9xqH0RyLNSyxElF6pnwJq5pyb9W9wVuKzAhtDk2u+lYrdtiNJ4KcpfuHwh8sRwfOYPxB1jotWYU8pvon9Q4357kwfry+JlFwlLtb4xaVaoaKx/A0oYIz29Lll8u9r08faAIDHJOpNUozXLKon474SVkxFSIaby+d1zSKL4BfgP7LbH2fNKRY5qSkuQpoG2RjXbMQJnWtBS/c5kU1nLYDT5JUl3QKiLVtU+cbxwxrmOT+he8paabYn0XxAR1kR7BZWC1vMiwUdS1YgARuHuOGGtHQPXSrXz8A9ED65/lCvU+9rd/PEeNN/VTYS9N2uhCEDc+BGgn7BZ1/yUSOfdQUsieBm/dsr4Mw3xu4dbT5DJPg+oFZy0if+uNfD7y1xUfTVAU1SXQNEDanRAaksI5ec5tH0+wQM15JhfJ/fALmNm+vyB5M=
+    project: "lear-path-dev"
+    skip_cleanup: true
+    on:
+      branch: dev
